@@ -1,0 +1,9 @@
+# This workflow will build a golang project
+
+name: Go
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branc
