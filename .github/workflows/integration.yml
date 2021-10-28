@@ -1,1 +1,7 @@
-# This
+# This workflow will build a golang project
+
+name: Integration tests
+
+on:
+  push:
+    branche
