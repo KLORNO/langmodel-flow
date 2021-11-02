@@ -4,4 +4,11 @@ name: Integration tests
 
 on:
   push:
-    branche
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  schedule:
+    - cron: '30 1 * * *'
+
+jobs:
+  run-integr
