@@ -71,3 +71,129 @@ func TrimSuffix(suffix string, keys ...string) HandlerFunc {
 }
 
 // ParallelChain executes a list of handlers in parallel, up to a maximum number of concurrent executions.
+// If any of the handlers returns an error, the execution is stopped and the error is returned.
+// The results of all handlers are merged into a single Values object.
+func ParallelChain(maxParallel int, handlers ...Handler) HandlerFunc {
+	return func(ctx context.Context, values ...Values) (Values, error) {
+		ctx, cancel := context.WithCancel(ctx)
+		defer cancel()
+
+		chains := pl.FromSlice(ctx, handlers)
+
+		vals := Values{}.Merge(values...)
+		resC, errC := pl.Stage(ctx, maxParallel, chains, func(ctx context.Context, handler Handler) (Values, error) {
+			return handler.Call(ctx, vals)
+		})
+
+		finalErrC := make(chan error)
+		go func() {
+			for err := range pl.ReadOrDone(ctx, errC) {
+				if err != nil {
+					finalErrC <- err
+					cancel()
+					return
+				}
+			}
+			finalErrC <- nil
+		}()
+
+		results := Values{}
+		for res := range pl.ReadOrDone(ctx, resC) {
+			results = results.Merge(res)
+		}
+
+		if err := <-finalErrC; err != nil {
+			return nil, err
+		}
+		return results, ctx.Err()
+	}
+}
+
+// LanguageModel interface is implemented by all language models.
+type LanguageModel interface {
+	Call(ctx context.Context, input string) (string, error)
+}
+
+// LLM is a handler that can be used to add a language model to a chain.
+func LLM(model LanguageModel) HandlerFunc {
+	return func(ctx context.Context, values ...Values) (Values, error) {
+		vals := Values{}.Merge(values...)
+		input := vals.Get(DefaultKey)
+		output, err := model.Call(ctx, input)
+		if err != nil {
+			return nil, err
+		}
+		vals[DefaultKey] = output
+		return vals, nil
+	}
+}
+
+// ChatMessage is a struct that represents a message in a chat conversation.
+type ChatMessage struct {
+	Role    string
+	Content string
+}
+
+// ChatMessages is a list of ChatMessage.
+type ChatMessages []ChatMessage
+
+func (m ChatMessages) String() string {
+	var output []string
+	for _, msg := range m {
+		output = append(output, fmt.Sprintf("%s: %s", msg.Role, msg.Content))
+	}
+	return strings.Join(output, "\n")
+}
+
+// Last returns the last N messages from the list.
+func (m ChatMessages) Last(size int) ChatMessages {
+	if len(m) < size {
+		return m
+	}
+	return m[len(m)-size:]
+}
+
+// ChatLanguageModel interface is implemented by all chat language models.
+type ChatLanguageModel interface {
+	Chat(ctx context.Context, msgs []ChatMessage) (string, error)
+}
+
+// ChatLLM is a handler that can be used to add a chat model to a chain.
+// It is similar to the LLM handler, but it has a few differences:
+// It will use the value of the DefaultChatKey key (usually set by the ChatTemplate) as input
+// to the model, if available. If not, it will use the value of the DefaultKey key.
+func ChatLLM(model ChatLanguageModel) HandlerFunc {
+	return func(ctx context.Context, values ...Values) (Values, error) {
+		vals := Values{}.Merge(values...)
+		msgs, _ := vals[DefaultChatKey].(ChatMessages)
+		if msgs == nil {
+			text := vals.Get(DefaultKey)
+			if text != "" {
+				msgs = append(msgs, ChatMessage{Role: "user", Content: text})
+			}
+		}
+		output, err := model.Chat(ctx, msgs)
+		if err != nil {
+			return nil, err
+		}
+		vals[DefaultKey] = output
+		return vals, nil
+	}
+}
+
+// Memory is an interface that can be used to store and retrieve previous conversations.
+type Memory interface {
+	// Load returns previous conversations from the memory
+	Load(context.Context) (ChatMessages, error)
+
+	// Save last question/answer to the memory
+	Save(ctx context.Context, input, output string) error
+}
+
+// WithMemory is a wrapper that loads the previous conversation from the memory,
+// injects it into the chain as the value of the DefaultChatKey key, calls the wrapped handler,
+// and adds the last question/answer to the memory.
+func WithMemory(memory Memory, handler Handler) HandlerFunc {
+	return func(ctx context.Context, values ...Values) (Values, error) {
+		vals := Values{}.Merge(values...)
+		history, err := memory.Load(ctx)
