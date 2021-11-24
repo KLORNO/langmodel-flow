@@ -197,3 +197,46 @@ func WithMemory(memory Memory, handler Handler) HandlerFunc {
 	return func(ctx context.Context, values ...Values) (Values, error) {
 		vals := Values{}.Merge(values...)
 		history, err := memory.Load(ctx)
+		if err != nil {
+			return nil, err
+		}
+		outputVals, err := handler.Call(ctx, vals.Merge(Values{DefaultChatKey: history}))
+		if err != nil {
+			return nil, err
+		}
+		input, err := getValue(vals, "")
+		if err != nil {
+			return nil, err
+		}
+		output, err := getValue(outputVals, DefaultKey)
+		if err != nil {
+			return nil, err
+		}
+		err = memory.Save(ctx, input, output)
+		if err != nil {
+			return nil, err
+		}
+		return vals.Merge(outputVals), nil
+	}
+}
+
+// getValue returns the value of the given key from the given Values object.
+// If the key is empty, it returns the value of the first key in the Values object.
+// If the Values object has multiple keys, it returns an error.
+func getValue(values Values, key string) (string, error) {
+	ret := func(v any) (string, error) {
+		if s, ok := v.(string); !ok {
+			return "", fmt.Errorf("input value is not a string: %v", v)
+		} else {
+			return s, nil
+		}
+	}
+	if key != "" {
+		return ret(values[key])
+	}
+	keys := values.Keys()
+	if len(keys) == 1 {
+		return ret(values[keys[0]])
+	}
+	return "", fmt.Errorf("input values have multiple keys, memory only supported when one key currently: %v", keys)
+}
