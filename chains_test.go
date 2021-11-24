@@ -75,3 +75,103 @@ var _ = Describe("Handlers", func() {
 			Expect(err).NotTo(HaveOccurred())
 			Expect(result).To(Equal(Values{"key1": "value1", "key2": "value2"}))
 		})
+	})
+
+	Describe("ParallelChain", func() {
+		It("should execute handlers in parallel and merge the results", func() {
+			started := make(chan struct{})
+			finish := make(chan struct{})
+
+			handler1 := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				started <- struct{}{}
+				<-finish
+				return Values{"key1": "value1"}, nil
+			})
+			handler2 := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				started <- struct{}{}
+				<-finish
+				return Values{"key2": "value2"}, nil
+			})
+
+			chain := ParallelChain(2, handler1, handler2)
+
+			go func() {
+				// Wait for both handlers to start
+				<-started
+				<-started
+				// Allow both handlers to finish
+				close(finish)
+			}()
+
+			result, err := chain.Call(context.Background())
+			Expect(err).NotTo(HaveOccurred())
+			Expect(result).To(Equal(Values{"key1": "value1", "key2": "value2"}))
+
+			Eventually(finish).Should(BeClosed())
+		})
+
+		It("should return an error if any of the handlers returns an error", func() {
+			handler1 := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return Values{"key1": "value1"}, nil
+			})
+			handler2 := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return nil, errors.New("handler error")
+			})
+			chain := ParallelChain(2, handler1, handler2)
+			_, err := chain.Call(context.Background())
+			Expect(err).To(MatchError("handler error"))
+		})
+		It("should return context deadline error when context times out", func() {
+			ctx, cancel := context.WithTimeout(context.Background(), 10*time.Millisecond)
+			defer cancel()
+			handler1 := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				select {
+				case <-time.After(1 * time.Second):
+				case <-ctx.Done():
+				}
+
+				return Values{"key1": "value1"}, nil
+			})
+			handler2 := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return Values{"key2": "value2"}, nil
+			})
+			chain := ParallelChain(2, handler1, handler2)
+			_, err := chain.Call(ctx)
+			Expect(err).To(MatchError(context.DeadlineExceeded))
+		})
+	})
+
+	Describe("WithMemory", func() {
+		It("should load previous conversations, call the wrapped handler, and save the last question/answer", func() {
+			memory := &fakeMemory{
+				ChatMessages: ChatMessages{{"user", "previous conversation"}},
+			}
+			handler := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				Expect(values).To(HaveLen(1))
+				Expect(values[0]).To(HaveKeyWithValue(DefaultKey, "input"))
+				Expect(values[0]).To(HaveKeyWithValue(DefaultChatKey, ChatMessages{{"user", "previous conversation"}}))
+				return Values{DefaultKey: "output"}, nil
+			})
+			chain := WithMemory(memory, handler)
+
+			result, err := chain.Call(context.Background(), Values{DefaultKey: "input"})
+			Expect(err).NotTo(HaveOccurred())
+			Expect(result).To(HaveKeyWithValue(DefaultKey, "output"))
+			Expect(memory.ChatMessages).To(Equal(ChatMessages{
+				{"user", "previous conversation"},
+				{"user", "input"},
+				{"assistant", "output"},
+			}))
+		})
+
+		It("should return an error if loading from memory fails", func() {
+			memory := &fakeMemory{
+				LoadErr: errors.New("load error"),
+			}
+			handler := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return Values{DefaultKey: "output"}, nil
+			})
+			chain := WithMemory(memory, handler)
+
+			result, err := chain.Call(context.Background(),
+				Values{DefaultKey: "input"})
