@@ -175,3 +175,69 @@ var _ = Describe("Handlers", func() {
 
 			result, err := chain.Call(context.Background(),
 				Values{DefaultKey: "input"})
+			Expect(err).To(HaveOccurred())
+			Expect(err.Error()).To(Equal("load error"))
+			Expect(result).To(BeNil())
+		})
+
+		It("should return an error if saving to memory fails", func() {
+			memory := &fakeMemory{
+				SaveErr: errors.New("save error"),
+			}
+			handler := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return Values{DefaultKey: "output"}, nil
+			})
+			chain := WithMemory(memory, handler)
+
+			result, err := chain.Call(context.Background(), Values{DefaultKey: "input"})
+			Expect(err).To(HaveOccurred())
+			Expect(err.Error()).To(Equal("save error"))
+			Expect(result).To(BeNil())
+		})
+
+		It("should return an error if input value is not a string", func() {
+			memory := &fakeMemory{}
+			handler := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return Values{DefaultKey: "output"}, nil
+			})
+			chain := WithMemory(memory, handler)
+
+			result, err := chain.Call(context.Background(), Values{DefaultKey: 123})
+			Expect(err).To(HaveOccurred())
+			Expect(result).To(BeNil())
+		})
+
+		It("should return an error if output value is not a string", func() {
+			memory := &fakeMemory{}
+			handler := HandlerFunc(func(ctx context.Context, values ...Values) (Values, error) {
+				return Values{DefaultKey: 123}, nil
+			})
+			chain := WithMemory(memory, handler)
+
+			result, err := chain.Call(context.Background(), Values{DefaultKey: "input"})
+			Expect(err).To(HaveOccurred())
+			Expect(result).To(BeNil())
+		})
+	})
+})
+
+type fakeMemory struct {
+	ChatMessages ChatMessages
+	SaveErr      error
+	LoadErr      error
+}
+
+func (m *fakeMemory) Load(context.Context) (ChatMessages, error) {
+	if m.LoadErr != nil {
+		return nil, m.LoadErr
+	}
+	return m.ChatMessages, nil
+}
+
+func (m *fakeMemory) Save(_ context.Context, input, output string) error {
+	if m.SaveErr != nil {
+		return m.SaveErr
+	}
+	m.ChatMessages = append(m.ChatMessages, ChatMessage{Role: "user", Content: input}, ChatMessage{Role: "assistant", Content: output})
+	return nil
+}
