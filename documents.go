@@ -11,4 +11,5 @@ import (
 // are most similar to the embedding of the query.
 type VectorStore interface {
 	// AddDocuments adds the given documents to the store
-	AddDocuments(context.Co
+	AddDocuments(context.Context, ...Document) error
+	// SimilaritySearch returns the k most similar documents to t
