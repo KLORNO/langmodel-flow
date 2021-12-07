@@ -14,4 +14,4 @@ type VectorStore interface {
 	AddDocuments(context.Context, ...Document) error
 	// SimilaritySearch returns the k most similar documents to the query
 	SimilaritySearch(ctx context.Context, query string, k int) ([]Document, error)
-	// SimilaritySearchVector
+	// SimilaritySearchVectorWithScore returns the k most similar documents to the query, along with their similarity
