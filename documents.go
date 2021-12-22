@@ -25,4 +25,7 @@ type Document struct {
 	Metadata    map[string]any
 }
 
-// ScoredDocument represents a d
+// ScoredDocument represents a document along with its similarity score.
+type ScoredDocument struct {
+	Document
+	S
