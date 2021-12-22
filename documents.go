@@ -18,4 +18,6 @@ type VectorStore interface {
 	SimilaritySearchVectorWithScore(ctx context.Context, query []float32, k int) ([]ScoredDocument, error)
 }
 
-/
+// Document represents a document to be stored in a VectorStore.
+type Document struct {
+	ID          
