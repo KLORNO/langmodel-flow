@@ -20,4 +20,9 @@ type VectorStore interface {
 
 // Document represents a document to be stored in a VectorStore.
 type Document struct {
-	ID          
+	ID          string
+	PageContent string
+	Metadata    map[string]any
+}
+
+// ScoredDocument represents a d
