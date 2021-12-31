@@ -28,4 +28,8 @@ type Document struct {
 // ScoredDocument represents a document along with its similarity score.
 type ScoredDocument struct {
 	Document
-	S
+	Score float32
+}
+
+// Splitter is a function that splits a string into a slice of strings.
+type Sp
