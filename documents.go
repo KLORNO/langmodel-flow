@@ -32,4 +32,6 @@ type ScoredDocument struct {
 }
 
 // Splitter is a function that splits a string into a slice of strings.
-type Sp
+type Splitter = func(string) ([]string, error)
+
+// DocumentLoader is the interface implemented by types that can lo
