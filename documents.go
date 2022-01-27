@@ -35,4 +35,9 @@ type ScoredDocument struct {
 type Splitter = func(string) ([]string, error)
 
 // DocumentLoader is the interface implemented by types that can load documents.
-// The LoadNext method should the next available document, or io.EOF if there 
+// The LoadNext method should the next available document, or io.EOF if there are no more documents.
+type DocumentLoader interface {
+	LoadNext(ctx context.Context) (Document, error)
+}
+
+// Doc
