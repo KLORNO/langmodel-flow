@@ -40,4 +40,5 @@ type DocumentLoader interface {
 	LoadNext(ctx context.Context) (Document, error)
 }
 
-// Doc
+// DocumentLoaderFunc is an adapter to allow the use of ordinary functions as DocumentLoaders.
+type Docume
