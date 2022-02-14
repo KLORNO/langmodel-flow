@@ -47,4 +47,6 @@ func (f DocumentLoaderFunc) LoadNext(ctx context.Context) (Document, error) {
 	return f(ctx)
 }
 
-// LoadDocs loads the next n documents from the gi
+// LoadDocs loads the next n documents from the given DocumentLoader.
+func LoadDocs(n int, loader DocumentLoader) ([]Document, error) {
+	c
