@@ -41,4 +41,6 @@ type DocumentLoader interface {
 }
 
 // DocumentLoaderFunc is an adapter to allow the use of ordinary functions as DocumentLoaders.
-type Docume
+type DocumentLoaderFunc func(ctx context.Context) (Document, error)
+
+func (f DocumentLoaderFunc) LoadNext(ctx context.Contex
