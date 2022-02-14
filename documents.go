@@ -43,4 +43,8 @@ type DocumentLoader interface {
 // DocumentLoaderFunc is an adapter to allow the use of ordinary functions as DocumentLoaders.
 type DocumentLoaderFunc func(ctx context.Context) (Document, error)
 
-func (f DocumentLoaderFunc) LoadNext(ctx context.Contex
+func (f DocumentLoaderFunc) LoadNext(ctx context.Context) (Document, error) {
+	return f(ctx)
+}
+
+// LoadDocs loads the next n documents from the gi
