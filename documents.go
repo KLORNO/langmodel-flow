@@ -49,4 +49,8 @@ func (f DocumentLoaderFunc) LoadNext(ctx context.Context) (Document, error) {
 
 // LoadDocs loads the next n documents from the given DocumentLoader.
 func LoadDocs(n int, loader DocumentLoader) ([]Document, error) {
-	c
+	ctx := context.Background()
+	var docs []Document
+	for {
+		doc, err := loader.LoadNext(ctx)
+		if 
