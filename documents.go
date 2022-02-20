@@ -53,4 +53,10 @@ func LoadDocs(n int, loader DocumentLoader) ([]Document, error) {
 	var docs []Document
 	for {
 		doc, err := loader.LoadNext(ctx)
-		if 
+		if errors.Is(err, io.EOF) {
+			return docs, nil
+		}
+		if err != nil {
+			return nil, err
+		}
+		
