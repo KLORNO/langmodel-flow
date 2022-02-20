@@ -2,4 +2,5 @@ package flowllm
 
 import "context"
 
-// Em
+// Embeddings can be used to create a numerical representation of textual data.
+// This numerical representatio
