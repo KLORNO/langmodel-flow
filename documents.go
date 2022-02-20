@@ -59,4 +59,10 @@ func LoadDocs(n int, loader DocumentLoader) ([]Document, error) {
 		if err != nil {
 			return nil, err
 		}
-		
+		docs = append(docs, doc)
+		n--
+		if n == 0 {
+			return docs, nil
+		}
+	}
+}
