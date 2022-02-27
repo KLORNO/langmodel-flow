@@ -8,4 +8,6 @@ type Embeddings interface {
 	// EmbedString returns the embedding for the given string
 	EmbedString(context.Context, string) ([]float32, error)
 
-	// EmbedStrings return
+	// EmbedStrings returns the embeddings for multiple strings
+	EmbedStrings(context.Context, []string) ([][]float32, error)
+}
