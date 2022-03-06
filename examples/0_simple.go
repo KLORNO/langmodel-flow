@@ -8,4 +8,9 @@ import (
 	"github.com/deluan/flowllm/llms/openai"
 )
 
-func init
+func init() {
+	registerExample("simple", "A simple example with only one chain", simple)
+}
+
+func simple() {
+	// Build
