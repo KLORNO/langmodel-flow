@@ -13,4 +13,6 @@ func init() {
 }
 
 func simple() {
-	// Build
+	// Build a simple chain that will generate a joke about a given topic
+	chain := Chain(
+		ChatTemplate{UserMes
