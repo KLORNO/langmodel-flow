@@ -15,4 +15,8 @@ func init() {
 func simple() {
 	// Build a simple chain that will generate a joke about a given topic
 	chain := Chain(
-		ChatTemplate{UserMes
+		ChatTemplate{UserMessage("Tell me a joke about {topic}?")},
+		ChatLLM(openai.NewChatModel(openai.Options{})),
+	)
+
+	// Run the chain for
