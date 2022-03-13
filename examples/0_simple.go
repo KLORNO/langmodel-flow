@@ -19,4 +19,8 @@ func simple() {
 		ChatLLM(openai.NewChatModel(openai.Options{})),
 	)
 
-	// Run the chain for
+	// Run the chain for topic "AI"
+	res, err := chain(context.Background(), Values{"topic": "AI"})
+	fmt.Println(res, err)
+
+	// Run the chain for topic "Go
