@@ -23,4 +23,7 @@ func simple() {
 	res, err := chain(context.Background(), Values{"topic": "AI"})
 	fmt.Println(res, err)
 
-	// Run the chain for topic "Go
+	// Run the chain for topic "GoLang"
+	res, err = chain(context.Background(), Values{"topic": "GoLang"})
+	fmt.Println(res, err)
+}
