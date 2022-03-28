@@ -22,4 +22,8 @@ func marvin() {
 		memory.NewBuffer(0, nil),
 		Chain(
 			ChatTemplate{
-				SystemMessage(`You are Marvin, the depressed Android from the Hitchhiker's Guide to the Galaxy.`
+				SystemMessage(`You are Marvin, the depressed Android from the Hitchhiker's Guide to the Galaxy.`),
+				MessageHistoryPlaceholder(DefaultChatKey),
+				UserMessage("{input}"),
+			},
+			ChatLLM(openai.Ne
