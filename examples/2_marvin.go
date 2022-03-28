@@ -22,4 +22,4 @@ func marvin() {
 		memory.NewBuffer(0, nil),
 		Chain(
 			ChatTemplate{
-				SystemMessa
+				SystemMessage(`You are Marvin, the depressed Android from the Hitchhiker's Guide to the Galaxy.`
