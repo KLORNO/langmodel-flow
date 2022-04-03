@@ -26,4 +26,8 @@ func marvin() {
 				MessageHistoryPlaceholder(DefaultChatKey),
 				UserMessage("{input}"),
 			},
-			ChatLLM(openai.Ne
+			ChatLLM(openai.NewChatModel(openai.Options{Model: "gpt-3.5-turbo", Temperature: 0.8})),
+		),
+	)
+
+	input := "Introduce yo
