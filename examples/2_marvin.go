@@ -34,4 +34,9 @@ func marvin() {
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		res, err := chain(ctx, Values{"input": input})
-		if er
+		if err != nil {
+			panic(err)
+		}
+		fmt.Println("🤖", strings.TrimSpace(res.String()))
+
+		print("❓  
