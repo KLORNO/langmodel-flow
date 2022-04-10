@@ -30,4 +30,8 @@ func marvin() {
 		),
 	)
 
-	input := "Introduce yo
+	input := "Introduce yourself."
+	reader := bufio.NewReader(os.Stdin)
+	for {
+		res, err := chain(ctx, Values{"input": input})
+		if er
