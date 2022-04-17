@@ -39,4 +39,7 @@ func marvin() {
 		}
 		fmt.Println("🤖", strings.TrimSpace(res.String()))
 
-		print("❓  
+		print("❓  ")
+		input, _ = reader.ReadString('\n')
+	}
+}
