@@ -3,4 +3,13 @@ package main
 import (
 	"fmt"
 	"os"
-	"str
+	"strconv"
+)
+
+type example struct {
+	name        string
+	description string
+	fn          func()
+}
+
+var
