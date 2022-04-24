@@ -12,4 +12,7 @@ type example struct {
 	fn          func()
 }
 
-var
+var examples []example
+
+func registerExample(name, description string, fn func()) {
+	examples = append(examp
