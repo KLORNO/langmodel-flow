@@ -20,4 +20,7 @@ func registerExample(name, description string, fn func()) {
 
 func main() {
 	if len(os.Args) == 1 {
-		println("usage: examples 
+		println("usage: examples <example_number>")
+		println("available examples:")
+		for i, e := range examples {
+			fmt.Printf(" %d) %-20s - %s\n
