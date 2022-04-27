@@ -23,4 +23,9 @@ func main() {
 		println("usage: examples <example_number>")
 		println("available examples:")
 		for i, e := range examples {
-			fmt.Printf(" %d) %-20s - %s\n
+			fmt.Printf(" %d) %-20s - %s\n", i, e.name, e.description)
+		}
+		os.Exit(0)
+	}
+	num, err := strconv.Atoi(os.Args[1])
+	if er
