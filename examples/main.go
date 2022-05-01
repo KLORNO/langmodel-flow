@@ -33,4 +33,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	e 
+	e := examples[num]
+	e.fn()
+	os.Exit(0)
+}
