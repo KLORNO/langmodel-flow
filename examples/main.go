@@ -28,4 +28,9 @@ func main() {
 		os.Exit(0)
 	}
 	num, err := strconv.Atoi(os.Args[1])
-	if er
+	if err != nil || num < 0 || num >= len(examples) {
+		println("invalid example number")
+		os.Exit(1)
+	}
+
+	e 
