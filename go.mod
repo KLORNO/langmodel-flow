@@ -12,4 +12,8 @@ require (
 	golang.org/x/exp v0.0.0-20230425010034-47ecfdc1ba53
 )
 
-require github.com/dlclark/regexp2 v1.9.0 // indir
+require github.com/dlclark/regexp2 v1.9.0 // indirect
+
+require (
+	github.com/go-logr/logr v1.2.3 // indirect
+	github.com/go-task/slim-sprig v0.0.0-20230
