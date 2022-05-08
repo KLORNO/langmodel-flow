@@ -6,4 +6,7 @@ require (
 	github.com/google/uuid v1.3.0
 	github.com/onsi/ginkgo/v2 v2.9.2
 	github.com/onsi/gomega v1.27.6
-	githu
+	github.com/sashabaranov/go-openai v1.9.0
+	github.com/tiktoken-go/tokenizer v0.1.0
+	go.etcd.io/bbolt v1.3.7
+	
