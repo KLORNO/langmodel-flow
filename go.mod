@@ -21,4 +21,6 @@ require (
 	github.com/google/pprof v0.0.0-20220829040838-70bd9ae97f40 // indirect
 	golang.org/x/net v0.9.0 // indirect
 	golang.org/x/sync v0.1.0
-	
+	golang.org/x/sys v0.7.0 // indirect
+	golang.org/x/text v0.9.0 // indirect
+	golang.org/x/tools v0.7
