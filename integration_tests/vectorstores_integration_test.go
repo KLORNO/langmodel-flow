@@ -5,4 +5,6 @@ import (
 	"os"
 	"strconv"
 
-	"githu
+	"github.com/deluan/flowllm"
+	"github.com/deluan/flowllm/vectorstores"
+	"github.com/deluan/flowllm/vectorstores/bol
