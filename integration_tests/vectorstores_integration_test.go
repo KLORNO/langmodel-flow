@@ -16,4 +16,6 @@ import (
 
 var _ = Describe("Vector Stores Integration Tests", func() {
 	var (
-		boltVS
+		boltVS         flowllm.VectorStore
+		memoryVS       flowllm.VectorStore
+		pineconeVS     flowll
