@@ -18,4 +18,10 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 	var (
 		boltVS         flowllm.VectorStore
 		memoryVS       flowllm.VectorStore
-		pineconeVS     flowll
+		pineconeVS     flowllm.VectorStore
+		ctx            context.Context
+		mockEmbeddings *FakeEmbeddings
+	)
+
+	BeforeEach(func() {
+		ctx = cont
