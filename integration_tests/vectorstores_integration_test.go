@@ -29,4 +29,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		mockEmbeddings = &FakeEmbeddings{}
 
 		// Create a Memory VectorStore
-		
+		memoryVS = vectorstores.NewMemoryVectorStore(mockEmbeddings)
+
+		// Create a BoltDB VectorStore
+		boltTmpDB, err := os.
