@@ -24,4 +24,9 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 	)
 
 	BeforeEach(func() {
-		ctx = cont
+		ctx = context.Background()
+		var err error
+		mockEmbeddings = &FakeEmbeddings{}
+
+		// Create a Memory VectorStore
+		
