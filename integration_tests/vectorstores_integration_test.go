@@ -32,4 +32,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		memoryVS = vectorstores.NewMemoryVectorStore(mockEmbeddings)
 
 		// Create a BoltDB VectorStore
-		boltTmpDB, err := os.
+		boltTmpDB, err := os.CreateTemp("", "flowllm_bolt_*_.db")
+		Expect(err).ToNot(HaveOccurred())
+		_ = boltTmpDB.Close()
