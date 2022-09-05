@@ -36,4 +36,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		Expect(err).ToNot(HaveOccurred())
 		_ = boltTmpDB.Close()
 		var closeDB func()
-		boltVS, closeDB, err = bolt.NewVectorStore(mockEmbeddings, bolt.Options{Path: 
+		boltVS, closeDB, err = bolt.NewVectorStore(mockEmbeddings, bolt.Options{Path: boltTmpDB.Name()})
+		Expect(err).ToNot(HaveOccurred())
+		DeferCleanup(closeDB)
+		DeferCleanup
