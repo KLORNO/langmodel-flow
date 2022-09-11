@@ -39,4 +39,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		boltVS, closeDB, err = bolt.NewVectorStore(mockEmbeddings, bolt.Options{Path: boltTmpDB.Name()})
 		Expect(err).ToNot(HaveOccurred())
 		DeferCleanup(closeDB)
-		DeferCleanup
+		DeferCleanup(func() { _ = os.Remove(boltTmpDB.Name()) })
+
+		if os.Getenv("PINECONE_API_KEY") != "" {
+			// Cre
