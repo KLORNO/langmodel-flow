@@ -46,4 +46,11 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			pineconeVS, err = pinecone.NewVectorStore(ctx, mockEmbeddings,
 				pinecone.Options{
 					Index:     os.Getenv("PINECONE_INDEX_INTEGRATION_TEST"),
-					NameSpace: "flowllm-integration-test
+					NameSpace: "flowllm-integration-tests-" + uuid.NewString(),
+				},
+			)
+			Expect(err).ToNot(HaveOccurred())
+		}
+	})
+
+	DescribeTable("It should pe
