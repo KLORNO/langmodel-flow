@@ -44,4 +44,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		if os.Getenv("PINECONE_API_KEY") != "" {
 			// Create a Pinecone VectorStore
 			pineconeVS, err = pinecone.NewVectorStore(ctx, mockEmbeddings,
-				pinecone.Optio
+				pinecone.Options{
+					Index:     os.Getenv("PINECONE_INDEX_INTEGRATION_TEST"),
+					NameSpace: "flowllm-integration-test
