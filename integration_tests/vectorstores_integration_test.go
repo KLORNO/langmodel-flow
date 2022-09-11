@@ -42,4 +42,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		DeferCleanup(func() { _ = os.Remove(boltTmpDB.Name()) })
 
 		if os.Getenv("PINECONE_API_KEY") != "" {
-			// Cre
+			// Create a Pinecone VectorStore
+			pineconeVS, err = pinecone.NewVectorStore(ctx, mockEmbeddings,
+				pinecone.Optio
