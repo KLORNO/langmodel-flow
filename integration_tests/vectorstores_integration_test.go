@@ -53,4 +53,5 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		}
 	})
 
-	DescribeTable("It should pe
+	DescribeTable("It should perform a similarity search using the query string and return correct results",
+		func(getStore func() flowllm.Vect
