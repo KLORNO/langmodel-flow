@@ -66,4 +66,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 				},
 				{
 					PageContent: "second document",
-					Metadata:    m
+					Metadata:    map[string]any{"key2": "value2"},
+				},
+			}
+			Expect(store.AddDocuments(ctx, documents...)).To(Succee
