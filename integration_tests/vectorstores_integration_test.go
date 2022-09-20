@@ -62,4 +62,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			documents := []flowllm.Document{
 				{
 					PageContent: "first document",
-					Metadata:
+					Metadata:    map[string]any{"key1": "value1"},
+				},
+				{
+					PageContent: "second document",
+					Metadata:    m
