@@ -57,4 +57,9 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		func(getStore func() flowllm.VectorStore) {
 			store := getStore()
 			if store == nil {
-				Skip("Skipping test. No VectorStore f
+				Skip("Skipping test. No VectorStore found.")
+			}
+			documents := []flowllm.Document{
+				{
+					PageContent: "first document",
+					Metadata:
