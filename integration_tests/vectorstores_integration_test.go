@@ -69,4 +69,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 					Metadata:    map[string]any{"key2": "value2"},
 				},
 			}
-			Expect(store.AddDocuments(ctx, documents...)).To(Succee
+			Expect(store.AddDocuments(ctx, documents...)).To(Succeed())
+
+			query := "2"
+			k := 2
+			similarDocs, err := store.SimilaritySearch(ctx, query, 
