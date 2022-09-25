@@ -77,4 +77,5 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 
 			Expect(err).ToNot(HaveOccurred())
 			Expect(similarDocs).To(HaveLen(k))
-			Expect(similarDocs[0].PageCo
+			Expect(similarDocs[0].PageContent).To(Equal(documents[1].PageContent))
+			Expect(similarDocs[0].Metadata).To(Equal(documents[1].Metadat
