@@ -83,4 +83,5 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			Expect(similarDocs[1].Metadata).To(Equal(documents[0].Metadata))
 		},
 		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
-		Entry("Bolt"
+		Entry("Bolt", func() flowllm.VectorStore { return boltVS }),
+		Entry("Pinecone", func() flowllm.VectorSt
