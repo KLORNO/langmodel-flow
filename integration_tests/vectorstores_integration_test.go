@@ -84,4 +84,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		},
 		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
 		Entry("Bolt", func() flowllm.VectorStore { return boltVS }),
-		Entry("Pinecone", func() flowllm.VectorSt
+		Entry("Pinecone", func() flowllm.VectorStore { return pineconeVS }),
+	)
+
+	DescribeTable("It should perform a similarity search using the query vector and 
