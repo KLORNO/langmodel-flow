@@ -89,4 +89,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 
 	DescribeTable("It should perform a similarity search using the query vector and return correct results with scores",
 		func(getStore func() flowllm.VectorStore) {
-			store :=
+			store := getStore()
+			if store == nil {
+				Skip("Skipping test. No VectorStore found.")
+			}
+			do
