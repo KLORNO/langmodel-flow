@@ -95,4 +95,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			}
 			documents := []flowllm.Document{
 				{PageContent: "first document"},
-				{PageContent: "second documen
+				{PageContent: "second document"},
+			}
+			Expect(store.AddDocuments(ctx, documents...)).To(Succeed())
+
+			queryVector, _ := moc
