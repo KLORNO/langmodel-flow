@@ -99,4 +99,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			}
 			Expect(store.AddDocuments(ctx, documents...)).To(Succeed())
 
-			queryVector, _ := moc
+			queryVector, _ := mockEmbeddings.EmbedString(ctx, "1")
+			k := 2
+			scoredDocs, err := store.SimilaritySearchVectorWithScore(ctx, q
