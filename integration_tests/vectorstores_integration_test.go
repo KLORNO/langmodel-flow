@@ -105,4 +105,5 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 
 			Expect(err).ToNot(HaveOccurred())
 			Expect(scoredDocs).To(HaveLen(k))
-			Expect(scoredDocs[0].Documen
+			Expect(scoredDocs[0].Document.PageContent).To(Equal(documents[0].PageContent))
+			Expect(scoredDocs[1].Document.PageContent).To(Equa
