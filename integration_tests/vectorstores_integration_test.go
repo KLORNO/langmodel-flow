@@ -110,4 +110,5 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			Expect(scoredDocs[0].Score).To(BeNumerically(">", scoredDocs[1].Score))
 		},
 		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
-		Entry("Bolt", func() f
+		Entry("Bolt", func() flowllm.VectorStore { return boltVS }),
+		Entry("Pinecone", func() flowllm.VectorStore { return pinecone
