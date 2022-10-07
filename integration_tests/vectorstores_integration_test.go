@@ -107,4 +107,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			Expect(scoredDocs).To(HaveLen(k))
 			Expect(scoredDocs[0].Document.PageContent).To(Equal(documents[0].PageContent))
 			Expect(scoredDocs[1].Document.PageContent).To(Equal(documents[1].PageContent))
-			Expect(scoredDocs[0].Score).To(BeNumerically(">", scoredDocs
+			Expect(scoredDocs[0].Score).To(BeNumerically(">", scoredDocs[1].Score))
+		},
+		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
+		Entry("Bolt", func() f
