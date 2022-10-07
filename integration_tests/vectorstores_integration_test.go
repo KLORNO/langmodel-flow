@@ -114,4 +114,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		Entry("Pinecone", func() flowllm.VectorStore { return pineconeVS }),
 	)
 
-	DescribeTable("It should return all documents when k is greater than the number of documents in
+	DescribeTable("It should return all documents when k is greater than the number of documents in the vector store",
+		func(getStore func() flowllm.VectorStore) {
+			store := getStore()
+			if store == ni
