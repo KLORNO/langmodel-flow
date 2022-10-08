@@ -121,4 +121,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 				Skip("Skipping test. No VectorStore found.")
 			}
 			documents := []flowllm.Document{
-				{PageContent: "first
+				{PageContent: "first document"},
+				{PageContent: "second document"},
+			}
+			Expect(store.AddDocuments(ctx, do
