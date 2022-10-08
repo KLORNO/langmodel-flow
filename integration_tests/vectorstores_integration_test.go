@@ -124,4 +124,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 				{PageContent: "first document"},
 				{PageContent: "second document"},
 			}
-			Expect(store.AddDocuments(ctx, do
+			Expect(store.AddDocuments(ctx, documents...)).To(Succeed())
+
+			query := "1"
+			k := 3
+			similarDocs, err := store.SimilaritySearch(ctx, query,
