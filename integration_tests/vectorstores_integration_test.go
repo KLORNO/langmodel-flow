@@ -128,4 +128,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 
 			query := "1"
 			k := 3
-			similarDocs, err := store.SimilaritySearch(ctx, query,
+			similarDocs, err := store.SimilaritySearch(ctx, query, k)
+
+			Expect(err).ToNot(HaveOccurred())
+			Expect(similarDocs).To(HaveLen(len(
