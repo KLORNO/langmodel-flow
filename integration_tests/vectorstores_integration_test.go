@@ -117,4 +117,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 	DescribeTable("It should return all documents when k is greater than the number of documents in the vector store",
 		func(getStore func() flowllm.VectorStore) {
 			store := getStore()
-			if store == ni
+			if store == nil {
+				Skip("Skipping test. No VectorStore found.")
+			}
+			documents := []flowllm.Document{
+				{PageContent: "first
