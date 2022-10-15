@@ -133,4 +133,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			Expect(err).ToNot(HaveOccurred())
 			Expect(similarDocs).To(HaveLen(len(documents)))
 			Expect(similarDocs[0].PageContent).To(Equal(documents[0].PageContent))
-			Expect(similarDocs[1].Pag
+			Expect(similarDocs[1].PageContent).To(Equal(documents[1].PageContent))
+		},
+		Entry("Memory", func() flowllm.VectorStore { return memory
