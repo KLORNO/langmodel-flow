@@ -131,4 +131,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			similarDocs, err := store.SimilaritySearch(ctx, query, k)
 
 			Expect(err).ToNot(HaveOccurred())
-			Expect(similarDocs).To(HaveLen(len(
+			Expect(similarDocs).To(HaveLen(len(documents)))
+			Expect(similarDocs[0].PageContent).To(Equal(documents[0].PageContent))
+			Expect(similarDocs[1].Pag
