@@ -140,4 +140,5 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		Entry("Pinecone", func() flowllm.VectorStore { return pineconeVS }),
 	)
 
-	DescribeTable("It should return an empty resul
+	DescribeTable("It should return an empty result when performing a similarity search on an empty vector store",
+		func(getStore func() flowllm.Vecto
