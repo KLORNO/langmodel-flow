@@ -141,4 +141,9 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 	)
 
 	DescribeTable("It should return an empty result when performing a similarity search on an empty vector store",
-		func(getStore func() flowllm.Vecto
+		func(getStore func() flowllm.VectorStore) {
+			store := getStore()
+			if store == nil {
+				Skip("Skipping test. No VectorStore found.")
+			}
+			query :
