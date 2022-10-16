@@ -135,4 +135,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			Expect(similarDocs[0].PageContent).To(Equal(documents[0].PageContent))
 			Expect(similarDocs[1].PageContent).To(Equal(documents[1].PageContent))
 		},
-		Entry("Memory", func() flowllm.VectorStore { return memory
+		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
+		Entry("Bolt", func() flowllm.VectorStore { return boltVS }),
+		Entry("Pinecone",
