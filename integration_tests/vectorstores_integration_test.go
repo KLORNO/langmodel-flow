@@ -146,4 +146,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			if store == nil {
 				Skip("Skipping test. No VectorStore found.")
 			}
-			query :
+			query := "test query"
+			k := 2
+			similarDocs, err := store.SimilaritySearch(ctx, query, k)
+
+			E
