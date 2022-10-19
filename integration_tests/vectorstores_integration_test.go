@@ -155,4 +155,8 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 		},
 		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
 		Entry("Bolt", func() flowllm.VectorStore { return boltVS }),
-	
+		Entry("Pinecone", func() flowllm.VectorStore { return pineconeVS }),
+	)
+})
+
+type FakeEmbeddings struct{
