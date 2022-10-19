@@ -150,4 +150,7 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			k := 2
 			similarDocs, err := store.SimilaritySearch(ctx, query, k)
 
-			E
+			Expect(err).ToNot(HaveOccurred())
+			Expect(similarDocs).To(BeEmpty())
+		},
+		Entry("Memory", func() flowl
