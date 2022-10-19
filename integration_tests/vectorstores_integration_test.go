@@ -153,4 +153,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 			Expect(err).ToNot(HaveOccurred())
 			Expect(similarDocs).To(BeEmpty())
 		},
-		Entry("Memory", func() flowl
+		Entry("Memory", func() flowllm.VectorStore { return memoryVS }),
+		Entry("Bolt", func() flowllm.VectorStore { return boltVS }),
+	
