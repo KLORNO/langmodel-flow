@@ -167,4 +167,5 @@ func (m *FakeEmbeddings) EmbedString(_ context.Context, query string) ([]float32
 	return vectors, nil
 }
 
-func (m *FakeEmbeddings) EmbedStri
+func (m *FakeEmbeddings) EmbedStrings(_ context.Context, texts []string) ([][]float32, error) {
+	vectors := make([][]float32, len(t
