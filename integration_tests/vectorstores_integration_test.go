@@ -159,4 +159,6 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 	)
 })
 
-type FakeEmbeddings struct{
+type FakeEmbeddings struct{}
+
+func (m *FakeEmbeddings) EmbedString(_ context.Context, query string) ([]float32, error) {
