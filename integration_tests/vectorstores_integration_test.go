@@ -162,3 +162,9 @@ var _ = Describe("Vector Stores Integration Tests", func() {
 type FakeEmbeddings struct{}
 
 func (m *FakeEmbeddings) EmbedString(_ context.Context, query string) ([]float32, error) {
+	num, _ := strconv.Atoi(query)
+	vectors := m.fakeEmbed(num, 1, 1)
+	return vectors, nil
+}
+
+func (m *FakeEmbeddings) EmbedStri
