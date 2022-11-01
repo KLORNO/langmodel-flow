@@ -11,3 +11,11 @@ import (
 type EmbeddingsOptions struct {
 	ApiKey       string
 	KeepNewLines bool
+	BatchSize    int
+}
+type Embeddings struct {
+	client *openai.Client
+	opts   EmbeddingsOptions
+}
+
+fun
