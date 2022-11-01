@@ -5,4 +5,9 @@ import (
 	"os"
 	"strings"
 
-	"gi
+	"github.com/sashabaranov/go-openai"
+)
+
+type EmbeddingsOptions struct {
+	ApiKey       string
+	KeepNewLines bool
