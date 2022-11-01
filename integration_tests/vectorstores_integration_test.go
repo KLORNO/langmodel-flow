@@ -178,4 +178,7 @@ func (m *FakeEmbeddings) EmbedStrings(_ context.Context, texts []string) ([][]fl
 func (m *FakeEmbeddings) fakeEmbed(nums ...int) []float32 {
 	vector := make([]float32, 1536)
 	for i, n := range nums {
-		vecto
+		vector[i] = float32(n)
+	}
+	return vector
+}
