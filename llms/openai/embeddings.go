@@ -18,4 +18,6 @@ type Embeddings struct {
 	opts   EmbeddingsOptions
 }
 
-fun
+func NewEmbeddings(opts EmbeddingsOptions) (*Embeddings, error) {
+	if opts.ApiKey == "" {
+		opts.
