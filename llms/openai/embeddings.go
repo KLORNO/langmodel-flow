@@ -25,4 +25,12 @@ func NewEmbeddings(opts EmbeddingsOptions) (*Embeddings, error) {
 	if opts.BatchSize == 0 {
 		opts.BatchSize = 512
 	}
-	e := &Embeddings{opts: o
+	e := &Embeddings{opts: opts}
+	e.client = openai.NewClient(opts.ApiKey)
+
+	return e, nil
+}
+
+type Option func(*Embeddings)
+
+func (o *Emb
