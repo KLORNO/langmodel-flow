@@ -33,4 +33,5 @@ func NewEmbeddings(opts EmbeddingsOptions) (*Embeddings, error) {
 
 type Option func(*Embeddings)
 
-func (o *Emb
+func (o *Embeddings) EmbedString(ctx context.Context, text string) ([]float32, error) {
+	texts := o
