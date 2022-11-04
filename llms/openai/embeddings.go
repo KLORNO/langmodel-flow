@@ -20,4 +20,9 @@ type Embeddings struct {
 
 func NewEmbeddings(opts EmbeddingsOptions) (*Embeddings, error) {
 	if opts.ApiKey == "" {
-		opts.
+		opts.ApiKey = os.Getenv("OPENAI_API_KEY")
+	}
+	if opts.BatchSize == 0 {
+		opts.BatchSize = 512
+	}
+	e := &Embeddings{opts: o
