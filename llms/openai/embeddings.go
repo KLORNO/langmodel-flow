@@ -37,3 +37,9 @@ func (o *Embeddings) EmbedString(ctx context.Context, text string) ([]float32, e
 	texts := o.prepareTexts([]string{text})
 	embeddings, err := o.embedTexts(ctx, []string{texts[0]})
 	if err != nil {
+		return nil, err
+	}
+	return embeddings[0], nil
+}
+
+func (o *Embeddings) EmbedStrings(ctx context.Context, texts []s
