@@ -42,4 +42,5 @@ func (o *Embeddings) EmbedString(ctx context.Context, text string) ([]float32, e
 	return embeddings[0], nil
 }
 
-func (o *Embeddings) EmbedStrings(ctx context.Context, texts []s
+func (o *Embeddings) EmbedStrings(ctx context.Context, texts []string) ([][]float32, error) {
+	chunks := chunkArray(o.prepareTexts(texts), o.opts.BatchSize
