@@ -34,4 +34,6 @@ func NewEmbeddings(opts EmbeddingsOptions) (*Embeddings, error) {
 type Option func(*Embeddings)
 
 func (o *Embeddings) EmbedString(ctx context.Context, text string) ([]float32, error) {
-	texts := o
+	texts := o.prepareTexts([]string{text})
+	embeddings, err := o.embedTexts(ctx, []string{texts[0]})
+	if err != nil {
