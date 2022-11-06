@@ -52,4 +52,8 @@ func (o *Embeddings) EmbedStrings(ctx context.Context, texts []string) ([][]floa
 		}
 		embeddings = append(embeddings, result...)
 	}
-	re
+	return embeddings, nil
+}
+
+func (o *Embeddings) prepareTexts(texts []string) []string {
+	if !o.opts.KeepNewLines
