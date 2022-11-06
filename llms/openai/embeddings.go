@@ -46,4 +46,10 @@ func (o *Embeddings) EmbedStrings(ctx context.Context, texts []string) ([][]floa
 	chunks := chunkArray(o.prepareTexts(texts), o.opts.BatchSize)
 	var embeddings [][]float32
 	for _, input := range chunks {
-		result, err := o.embedTexts
+		result, err := o.embedTexts(ctx, input)
+		if err != nil {
+			return nil, err
+		}
+		embeddings = append(embeddings, result...)
+	}
+	re
