@@ -56,4 +56,8 @@ func (o *Embeddings) EmbedStrings(ctx context.Context, texts []string) ([][]floa
 }
 
 func (o *Embeddings) prepareTexts(texts []string) []string {
-	if !o.opts.KeepNewLines
+	if !o.opts.KeepNewLines {
+		for i, text := range texts {
+			texts[i] = strings.ReplaceAll(text, "\n", " ")
+		}
+	}
