@@ -61,3 +61,8 @@ func (o *Embeddings) prepareTexts(texts []string) []string {
 			texts[i] = strings.ReplaceAll(text, "\n", " ")
 		}
 	}
+	return texts
+}
+
+func chunkArray(arr []string, chunkSize int) [][]string {
+	var chunks [][]stri
