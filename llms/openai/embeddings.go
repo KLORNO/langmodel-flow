@@ -65,4 +65,8 @@ func (o *Embeddings) prepareTexts(texts []string) []string {
 }
 
 func chunkArray(arr []string, chunkSize int) [][]string {
-	var chunks [][]stri
+	var chunks [][]string
+	for i := 0; i < len(arr); i += chunkSize {
+		end := i + chunkSize
+		if end > len(arr) {
+			end = l
