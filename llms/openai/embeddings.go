@@ -76,4 +76,5 @@ func chunkArray(arr []string, chunkSize int) [][]string {
 	return chunks
 }
 
-func (o *Embeddings) embed
+func (o *Embeddings) embedTexts(ctx context.Context, texts []string) ([][]float32, error) {
+	req := openai.Embedd
