@@ -81,4 +81,9 @@ func (o *Embeddings) embedTexts(ctx context.Context, texts []string) ([][]float3
 		Input: texts,
 		Model: openai.AdaEmbeddingV2,
 	}
-	resp, err := o.client.CreateEmbeddings(ctx, re
+	resp, err := o.client.CreateEmbeddings(ctx, req)
+	if err != nil {
+		return nil, err
+	}
+	var embeddings [][]float32
+	for _, embedding := range resp.Data
