@@ -77,4 +77,8 @@ func chunkArray(arr []string, chunkSize int) [][]string {
 }
 
 func (o *Embeddings) embedTexts(ctx context.Context, texts []string) ([][]float32, error) {
-	req := openai.Embedd
+	req := openai.EmbeddingRequest{
+		Input: texts,
+		Model: openai.AdaEmbeddingV2,
+	}
+	resp, err := o.client.CreateEmbeddings(ctx, re
