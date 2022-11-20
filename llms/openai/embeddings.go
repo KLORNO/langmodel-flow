@@ -86,4 +86,8 @@ func (o *Embeddings) embedTexts(ctx context.Context, texts []string) ([][]float3
 		return nil, err
 	}
 	var embeddings [][]float32
-	for _, embedding := range resp.Data
+	for _, embedding := range resp.Data {
+		embeddings = append(embeddings, embedding.Embedding)
+	}
+	return embeddings, nil
+}
