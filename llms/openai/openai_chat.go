@@ -13,4 +13,10 @@ const defaultChatModel = "gpt-3.5-turbo"
 // It uses a special prompt, Chat, to format the messages as expected by the chat completion API.
 // If you use a different prompt, it will be wrapped in a Chat with a single user message.
 type ChatModel struct {
-	*Comp
+	*CompletionModel
+}
+
+func NewChatModel(opts Options) *ChatModel {
+	if opts.Model == "" {
+		opts.Model = defaultChatModel
+	}
