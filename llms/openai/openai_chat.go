@@ -20,3 +20,8 @@ func NewChatModel(opts Options) *ChatModel {
 	if opts.Model == "" {
 		opts.Model = defaultChatModel
 	}
+	llm := NewCompletionModel(opts)
+	return &ChatModel{CompletionModel: llm}
+}
+
+func (m *ChatModel) Call
