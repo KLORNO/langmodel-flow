@@ -24,4 +24,5 @@ func NewChatModel(opts Options) *ChatModel {
 	return &ChatModel{CompletionModel: llm}
 }
 
-func (m *ChatModel) Call
+func (m *ChatModel) Call(ctx context.Context, input string) (string, error) {
+	req := m.makeRequest([]flowllm.ChatMessage{
