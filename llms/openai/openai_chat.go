@@ -33,4 +33,6 @@ func (m *ChatModel) Call(ctx context.Context, input string) (string, error) {
 	return resp.Choices[0].Message.Content, nil
 }
 
-func (m *ChatModel) Chat(ctx context.Context, 
+func (m *ChatModel) Chat(ctx context.Context, msgs []flowllm.ChatMessage) (string, error) {
+	req := m.makeRequest(msgs)
+	resp, err := m.client.CreateChatCompl
