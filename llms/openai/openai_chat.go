@@ -25,4 +25,7 @@ func NewChatModel(opts Options) *ChatModel {
 }
 
 func (m *ChatModel) Call(ctx context.Context, input string) (string, error) {
-	req := m.makeRequest([]flowllm.ChatMessage{
+	req := m.makeRequest([]flowllm.ChatMessage{{Role: "user", Content: input}})
+	resp, err := m.client.CreateChatCompletion(ctx, req)
+	if err != nil {
+		return 
