@@ -42,4 +42,5 @@ func (m *ChatModel) Chat(ctx context.Context, msgs []flowllm.ChatMessage) (strin
 	return resp.Choices[0].Message.Content, nil
 }
 
-fu
+func (m *ChatModel) makeRequest(msgs []flowllm.ChatMessage) openai.ChatCompletionRequest {
+	
