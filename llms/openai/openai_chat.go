@@ -43,4 +43,6 @@ func (m *ChatModel) Chat(ctx context.Context, msgs []flowllm.ChatMessage) (strin
 }
 
 func (m *ChatModel) makeRequest(msgs []flowllm.ChatMessage) openai.ChatCompletionRequest {
-	
+	var res []openai.ChatCompletionMessage
+	for _, m := range msgs {
+		res = append(res, openai.Cha
