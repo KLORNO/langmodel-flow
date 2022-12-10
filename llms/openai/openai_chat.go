@@ -50,4 +50,8 @@ func (m *ChatModel) makeRequest(msgs []flowllm.ChatMessage) openai.ChatCompletio
 			Content: m.Content,
 		})
 	}
-	req := openai.ChatCompletionReques
+	req := openai.ChatCompletionRequest{
+		Messages:         res,
+		Model:            m.opts.Model,
+		Temperature:      m.opts.Temperature,
+		MaxTok
