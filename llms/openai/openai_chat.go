@@ -57,3 +57,9 @@ func (m *ChatModel) makeRequest(msgs []flowllm.ChatMessage) openai.ChatCompletio
 		MaxTokens:        m.opts.MaxTokens,
 		TopP:             m.opts.TopP,
 		FrequencyPenalty: m.opts.FrequencyPenalty,
+		PresencePenalty:  m.opts.PresencePenalty,
+		Stop:             m.opts.Stop,
+	}
+
+	return req
+}
