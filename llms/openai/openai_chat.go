@@ -54,4 +54,6 @@ func (m *ChatModel) makeRequest(msgs []flowllm.ChatMessage) openai.ChatCompletio
 		Messages:         res,
 		Model:            m.opts.Model,
 		Temperature:      m.opts.Temperature,
-		MaxTok
+		MaxTokens:        m.opts.MaxTokens,
+		TopP:             m.opts.TopP,
+		FrequencyPenalty: m.opts.FrequencyPenalty,
