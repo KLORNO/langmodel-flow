@@ -26,3 +26,19 @@ func createDocuments(splitter flowllm.Splitter, texts []string, metadatas []map[
 	for i, text := range texts {
 		chunks, err := splitter(text)
 		if err != nil {
+			return nil, err
+		}
+		for _, chunk := range chunks {
+			metadata := make(map[string]any)
+			for k, v := range metadatas[i] {
+				metadata[k] = v
+			}
+			documents = append(documents, flowllm.Document{
+				PageContent: chunk,
+				Metadata:    metadata,
+			})
+		}
+	}
+
+	return documents, nil
+}
