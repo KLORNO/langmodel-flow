@@ -23,4 +23,10 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 				idx++
 				return docs[idx-1], nil
 			}
-			re
+			return flowllm.Document{}, io.EOF
+		}
+
+		// Load file
+		text, err := os.ReadFile(path)
+		if err != nil {
+		
