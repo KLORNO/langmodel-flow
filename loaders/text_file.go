@@ -8,4 +8,9 @@ import (
 	"github.com/deluan/flowllm"
 )
 
-func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
+func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderFunc {
+	var docs []flowllm.Document
+	var idx int
+	var spl flowllm.Splitter
+	if len(splitter) > 0 {
+		spl 
