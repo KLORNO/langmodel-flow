@@ -13,4 +13,8 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 	var idx int
 	var spl flowllm.Splitter
 	if len(splitter) > 0 {
-		spl 
+		spl = splitter[0]
+	}
+
+	return func(context.Context) (flowllm.Document, error) {
+		// Return next document 
