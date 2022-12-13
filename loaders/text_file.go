@@ -17,4 +17,10 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 	}
 
 	return func(context.Context) (flowllm.Document, error) {
-		// Return next document 
+		// Return next document if already loaded
+		if len(docs) > 0 {
+			if idx < len(docs) {
+				idx++
+				return docs[idx-1], nil
+			}
+			re
