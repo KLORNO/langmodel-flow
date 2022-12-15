@@ -29,4 +29,7 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 		// Load file
 		text, err := os.ReadFile(path)
 		if err != nil {
-		
+			return flowllm.Document{}, err
+		}
+		metadata := map[string]any{"source": path}
+		docs = []flowllm.Document{{Page
