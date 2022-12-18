@@ -32,4 +32,8 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 			return flowllm.Document{}, err
 		}
 		metadata := map[string]any{"source": path}
-		docs = []flowllm.Document{{Page
+		docs = []flowllm.Document{{PageContent: string(text), Metadata: metadata}}
+
+		// Use splitter if provided
+		if spl != nil {
+			docs, err = Sp
