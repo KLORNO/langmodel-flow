@@ -36,4 +36,10 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 
 		// Use splitter if provided
 		if spl != nil {
-			docs, err = Sp
+			docs, err = SplitDocuments(splitter[0], docs)
+			if err != nil {
+				return flowllm.Document{}, err
+			}
+		}
+
+		// Return first docume
