@@ -42,4 +42,8 @@ func TextFile(path string, splitter ...flowllm.Splitter) flowllm.DocumentLoaderF
 			}
 		}
 
-		// Return first docume
+		// Return first document
+		idx++
+		return docs[0], nil
+	}
+}
