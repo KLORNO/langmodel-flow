@@ -12,4 +12,8 @@ type Buffer struct {
 }
 
 func NewBuffer(windowSize int, history *flowllm.ChatMessages) *Buffer {
-	chatHistory := &ChatMessageHistory
+	chatHistory := &ChatMessageHistory{}
+	if history != nil {
+		chatHistory.messages = *history
+	}
+	return &Buffer{windowSize:
