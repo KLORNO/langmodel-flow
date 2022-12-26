@@ -16,4 +16,7 @@ func NewBuffer(windowSize int, history *flowllm.ChatMessages) *Buffer {
 	if history != nil {
 		chatHistory.messages = *history
 	}
-	return &Buffer{windowSize:
+	return &Buffer{windowSize: windowSize, chatHistory: chatHistory}
+}
+
+func (b *Buffer) Load(_ context.Context) (flowllm.ChatMe
