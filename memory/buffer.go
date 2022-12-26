@@ -8,4 +8,8 @@ import (
 
 type Buffer struct {
 	chatHistory *ChatMessageHistory
-	windowSize 
+	windowSize  int
+}
+
+func NewBuffer(windowSize int, history *flowllm.ChatMessages) *Buffer {
+	chatHistory := &ChatMessageHistory
