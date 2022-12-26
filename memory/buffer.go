@@ -19,4 +19,7 @@ func NewBuffer(windowSize int, history *flowllm.ChatMessages) *Buffer {
 	return &Buffer{windowSize: windowSize, chatHistory: chatHistory}
 }
 
-func (b *Buffer) Load(_ context.Context) (flowllm.ChatMe
+func (b *Buffer) Load(_ context.Context) (flowllm.ChatMessages, error) {
+	messages := b.chatHistory.GetMessages()
+	if b.windowSize > 0 {
+		messages = messages.Last
