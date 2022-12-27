@@ -22,4 +22,9 @@ func NewBuffer(windowSize int, history *flowllm.ChatMessages) *Buffer {
 func (b *Buffer) Load(_ context.Context) (flowllm.ChatMessages, error) {
 	messages := b.chatHistory.GetMessages()
 	if b.windowSize > 0 {
-		messages = messages.Last
+		messages = messages.Last(b.windowSize * 2)
+	}
+	return messages, nil
+}
+
+func (b *Buffer) Save(_ context.Context, input, 
