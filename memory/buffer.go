@@ -27,4 +27,8 @@ func (b *Buffer) Load(_ context.Context) (flowllm.ChatMessages, error) {
 	return messages, nil
 }
 
-func (b *Buffer) Save(_ context.Context, input, 
+func (b *Buffer) Save(_ context.Context, input, output string) error {
+	b.chatHistory.AddUserMessage(input)
+	b.chatHistory.AddAssistantMessage(output)
+	return nil
+}
