@@ -10,4 +10,8 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe
+var _ = Describe("Buffer", func() {
+	var ctx context.Context
+	var buf *memory.Buffer
+
+	BeforeEach(func()
