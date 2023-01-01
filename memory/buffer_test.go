@@ -18,4 +18,7 @@ var _ = Describe("Buffer", func() {
 		ctx = context.Background()
 	})
 
-	It("saves user and assistant messages to chat history", func(
+	It("saves user and assistant messages to chat history", func() {
+		buf = memory.NewBuffer(0, nil)
+		input := "User input message"
+		output := "Assistant output messag
