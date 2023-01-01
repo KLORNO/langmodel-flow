@@ -21,4 +21,8 @@ var _ = Describe("Buffer", func() {
 	It("saves user and assistant messages to chat history", func() {
 		buf = memory.NewBuffer(0, nil)
 		input := "User input message"
-		output := "Assistant output messag
+		output := "Assistant output message"
+		err := buf.Save(ctx, input, output)
+		Expect(err).NotTo(HaveOccurred())
+
+		messages, err := buf.Load
