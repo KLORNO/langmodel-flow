@@ -14,4 +14,8 @@ var _ = Describe("Buffer", func() {
 	var ctx context.Context
 	var buf *memory.Buffer
 
-	BeforeEach(func()
+	BeforeEach(func() {
+		ctx = context.Background()
+	})
+
+	It("saves user and assistant messages to chat history", func(
