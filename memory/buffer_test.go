@@ -25,4 +25,7 @@ var _ = Describe("Buffer", func() {
 		err := buf.Save(ctx, input, output)
 		Expect(err).NotTo(HaveOccurred())
 
-		messages, err := buf.Load
+		messages, err := buf.Load(ctx)
+		Expect(err).NotTo(HaveOccurred())
+		Expect(messages).To(HaveLen(2))
+		Expect(messages[0])
