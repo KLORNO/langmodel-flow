@@ -28,4 +28,5 @@ var _ = Describe("Buffer", func() {
 		messages, err := buf.Load(ctx)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(messages).To(HaveLen(2))
-		Expect(messages[0])
+		Expect(messages[0]).To(Equal(flowllm.ChatMessage{Content: "User input message", Role: "user"}))
+		Expect(messages[1]).To(Equal(flowllm.Chat
