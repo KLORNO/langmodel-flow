@@ -32,4 +32,6 @@ var _ = Describe("Buffer", func() {
 		Expect(messages[1]).To(Equal(flowllm.ChatMessage{Content: "Assistant output message", Role: "assistant"}))
 	})
 
-	It("initializes chat histor
+	It("initializes chat history with ChatMessages", func() {
+		msgs := flowllm.ChatMessages{
+			{Content: "User input me
