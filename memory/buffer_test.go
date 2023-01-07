@@ -34,4 +34,7 @@ var _ = Describe("Buffer", func() {
 
 	It("initializes chat history with ChatMessages", func() {
 		msgs := flowllm.ChatMessages{
-			{Content: "User input me
+			{Content: "User input message 0", Role: "user"},
+			{Content: "Assistant output message 0", Role: "assistant"},
+		}
+		buf = memory.New
