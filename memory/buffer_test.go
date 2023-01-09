@@ -39,4 +39,8 @@ var _ = Describe("Buffer", func() {
 		}
 		buf = memory.NewBuffer(0, &msgs)
 		err := buf.Save(ctx, "User input message 1", "Assistant output message 1")
-		Expect(err).NotTo(
+		Expect(err).NotTo(HaveOccurred())
+
+		messages, err := buf.Load(ctx)
+		Expect(err).NotTo(HaveOccurred())
+		Expect(messages
