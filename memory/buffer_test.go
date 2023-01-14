@@ -52,4 +52,5 @@ var _ = Describe("Buffer", func() {
 
 	It("truncates history with windowSize", func() {
 		buf = memory.NewBuffer(2, nil)
-		for i := 1; i 
+		for i := 1; i <= 3; i++ {
+			err := buf.Save(ctx, "User message "+strconv.Itoa(i), "Assistant message "+strcon
