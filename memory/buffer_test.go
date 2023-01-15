@@ -60,4 +60,6 @@ var _ = Describe("Buffer", func() {
 		messages, err := buf.Load(ctx)
 		Expect(err).NotTo(HaveOccurred())
 		Expect(messages).To(HaveLen(4))
-		Expect(messages[0].Content).To(Equal("User message 2"
+		Expect(messages[0].Content).To(Equal("User message 2"))
+		Expect(messages[1].Content).To(Equal("Assistant message 2"))
+		Expect(messag
