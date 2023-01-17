@@ -62,4 +62,7 @@ var _ = Describe("Buffer", func() {
 		Expect(messages).To(HaveLen(4))
 		Expect(messages[0].Content).To(Equal("User message 2"))
 		Expect(messages[1].Content).To(Equal("Assistant message 2"))
-		Expect(messag
+		Expect(messages[2].Content).To(Equal("User message 3"))
+		Expect(messages[3].Content).To(Equal("Assistant message 3"))
+	})
+})
