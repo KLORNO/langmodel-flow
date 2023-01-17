@@ -5,4 +5,8 @@ import (
 )
 
 type ChatMessageHistory struct {
-	messages []flowllm.C
+	messages []flowllm.ChatMessage
+}
+
+func (h *ChatMessageHistory) GetMessages() flowllm.ChatMessages {
+	copyMessages := make(flo
