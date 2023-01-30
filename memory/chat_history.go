@@ -9,4 +9,9 @@ type ChatMessageHistory struct {
 }
 
 func (h *ChatMessageHistory) GetMessages() flowllm.ChatMessages {
-	copyMessages := make(flo
+	copyMessages := make(flowllm.ChatMessages, len(h.messages))
+	copy(copyMessages, h.messages)
+	return copyMessages
+}
+
+fun
