@@ -14,4 +14,5 @@ func (h *ChatMessageHistory) GetMessages() flowllm.ChatMessages {
 	return copyMessages
 }
 
-fun
+func (h *ChatMessageHistory) AddUserMessage(message string) {
+	h.messages = append(h.messages, flowllm.ChatMessage{Conten
