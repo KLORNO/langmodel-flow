@@ -19,4 +19,7 @@ func (h *ChatMessageHistory) AddUserMessage(message string) {
 }
 
 func (h *ChatMessageHistory) AddAssistantMessage(message string) {
-	h.message
+	h.messages = append(h.messages, flowllm.ChatMessage{Content: message, Role: "assistant"})
+}
+
+func (h *Cha
