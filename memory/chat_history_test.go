@@ -16,4 +16,8 @@ var _ = Describe("ChatMessageHistory", func() {
 
 	Context("GetMessages", func() {
 		It("returns an empty slice when there are no messages", func() {
-			Expect(history.GetMessages()).To(BeE
+			Expect(history.GetMessages()).To(BeEmpty())
+		})
+
+		It("returns a copy of messages in the history", func() {
+			history.AddUserMes
