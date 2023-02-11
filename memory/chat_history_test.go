@@ -10,4 +10,9 @@ import (
 var _ = Describe("ChatMessageHistory", func() {
 	var history *memory.ChatMessageHistory
 
-	BeforeEach(func(
+	BeforeEach(func() {
+		history = &memory.ChatMessageHistory{}
+	})
+
+	Context("GetMessages", func() {
+		It("returns an emp
