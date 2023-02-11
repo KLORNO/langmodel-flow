@@ -6,3 +6,8 @@ import (
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
+
+var _ = Describe("ChatMessageHistory", func() {
+	var history *memory.ChatMessageHistory
+
+	BeforeEach(func(
