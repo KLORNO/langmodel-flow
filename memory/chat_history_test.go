@@ -20,4 +20,7 @@ var _ = Describe("ChatMessageHistory", func() {
 		})
 
 		It("returns a copy of messages in the history", func() {
-			history.AddUserMes
+			history.AddUserMessage("Test user message")
+			history.AddAssistantMessage("Test assistant message")
+
+			messages := histor
