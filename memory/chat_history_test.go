@@ -26,4 +26,6 @@ var _ = Describe("ChatMessageHistory", func() {
 			messages := history.GetMessages()
 			Expect(messages).To(HaveLen(2))
 			Expect(messages[0]).To(Equal(flowllm.ChatMessage{Content: "Test user message", Role: "user"}))
-			Expect(messages[1]).To(Equal(flowllm.ChatMessage{Con
+			Expect(messages[1]).To(Equal(flowllm.ChatMessage{Content: "Test assistant message", Role: "assistant"}))
+
+			// Modify the messages 
