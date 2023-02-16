@@ -28,4 +28,6 @@ var _ = Describe("ChatMessageHistory", func() {
 			Expect(messages[0]).To(Equal(flowllm.ChatMessage{Content: "Test user message", Role: "user"}))
 			Expect(messages[1]).To(Equal(flowllm.ChatMessage{Content: "Test assistant message", Role: "assistant"}))
 
-			// Modify the messages 
+			// Modify the messages slice and ensure it doesn't affect the original history
+			messages[0].Content = "Modified message"
+	
