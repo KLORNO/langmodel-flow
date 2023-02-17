@@ -31,3 +31,9 @@ var _ = Describe("ChatMessageHistory", func() {
 			// Modify the messages slice and ensure it doesn't affect the original history
 			messages[0].Content = "Modified message"
 			Expect(history.GetMessages()[0]).To(Equal(flowllm.ChatMessage{Content: "Test user message", Role: "user"}))
+		})
+	})
+
+	Context("AddUserMessage", func() {
+		It("adds a user message to the history", func() {
+			history.A
