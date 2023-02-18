@@ -36,4 +36,7 @@ var _ = Describe("ChatMessageHistory", func() {
 
 	Context("AddUserMessage", func() {
 		It("adds a user message to the history", func() {
-			history.A
+			history.AddUserMessage("Test user message")
+			messages := history.GetMessages()
+
+			Expect(messages).To(Have
