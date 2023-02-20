@@ -46,3 +46,5 @@ var _ = Describe("ChatMessageHistory", func() {
 
 	Context("AddAssistantMessage", func() {
 		It("adds an assistant message to the history", func() {
+			history.AddAssistantMessage("Test assistant message")
+			messages := history.GetMessages()
