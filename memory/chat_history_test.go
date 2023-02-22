@@ -48,3 +48,6 @@ var _ = Describe("ChatMessageHistory", func() {
 		It("adds an assistant message to the history", func() {
 			history.AddAssistantMessage("Test assistant message")
 			messages := history.GetMessages()
+
+			Expect(messages).To(HaveLen(1))
+			Expect(messages[0]).To(Equal(flowllm.ChatMessage{Content: "Tes
