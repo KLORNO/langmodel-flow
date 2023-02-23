@@ -50,4 +50,9 @@ var _ = Describe("ChatMessageHistory", func() {
 			messages := history.GetMessages()
 
 			Expect(messages).To(HaveLen(1))
-			Expect(messages[0]).To(Equal(flowllm.ChatMessage{Content: "Tes
+			Expect(messages[0]).To(Equal(flowllm.ChatMessage{Content: "Test assistant message", Role: "assistant"}))
+		})
+	})
+
+	Context("Clear", func() {
+		It("clears the history", func(
