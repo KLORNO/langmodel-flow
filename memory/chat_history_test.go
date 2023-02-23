@@ -57,4 +57,8 @@ var _ = Describe("ChatMessageHistory", func() {
 	Context("Clear", func() {
 		It("clears the history", func() {
 			history.AddUserMessage("Test user message")
-			history.AddAssistantMessage("Test assistant 
+			history.AddAssistantMessage("Test assistant message")
+			Expect(history.GetMessages()).To(HaveLen(2))
+
+			history.Clear()
+			Expect(history.GetMessages()).
