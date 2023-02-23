@@ -55,4 +55,6 @@ var _ = Describe("ChatMessageHistory", func() {
 	})
 
 	Context("Clear", func() {
-		It("clears the history", func(
+		It("clears the history", func() {
+			history.AddUserMessage("Test user message")
+			history.AddAssistantMessage("Test assistant 
