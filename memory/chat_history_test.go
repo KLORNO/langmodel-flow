@@ -61,4 +61,7 @@ var _ = Describe("ChatMessageHistory", func() {
 			Expect(history.GetMessages()).To(HaveLen(2))
 
 			history.Clear()
-			Expect(history.GetMessages()).
+			Expect(history.GetMessages()).To(BeEmpty())
+		})
+	})
+})
