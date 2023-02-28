@@ -1,4 +1,5 @@
-package memory_test
+
+package flowllm_test
 
 import (
 	"testing"
@@ -7,7 +8,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestMemory(t *testing.T) {
+func TestFlowLLM(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Memory Suite")
+	RunSpecs(t, "FlowLLM Tests Suite")
 }
