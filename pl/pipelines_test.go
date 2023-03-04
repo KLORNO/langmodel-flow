@@ -12,4 +12,9 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func Test
+func TestPipeline(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "Pipeline Tests Suite")
+}
+
+var _ = Describe("Pipe
