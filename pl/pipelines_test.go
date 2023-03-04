@@ -17,4 +17,7 @@ func TestPipeline(t *testing.T) {
 	RunSpecs(t, "Pipeline Tests Suite")
 }
 
-var _ = Describe("Pipe
+var _ = Describe("Pipeline", func() {
+	Describe("Stage", func() {
+		Context("happy path", func() {
+			It("calls the 'tra
