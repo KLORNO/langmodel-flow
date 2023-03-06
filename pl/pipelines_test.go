@@ -20,4 +20,6 @@ func TestPipeline(t *testing.T) {
 var _ = Describe("Pipeline", func() {
 	Describe("Stage", func() {
 		Context("happy path", func() {
-			It("calls the 'tra
+			It("calls the 'transform' function and returns values and errors", func() {
+				inC := make(chan int, 4)
+				for
