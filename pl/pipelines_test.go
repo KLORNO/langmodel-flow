@@ -27,4 +27,6 @@ var _ = Describe("Pipeline", func() {
 				}
 				close(inC)
 
-				outC, errC := pl.Stage(context.Background(), 1, i
+				outC, errC := pl.Stage(context.Background(), 1, inC, func(ctx context.Context, i int) (int, error) {
+					if i%2 == 0 {
+						return 0, errors.N
