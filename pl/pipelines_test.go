@@ -22,4 +22,9 @@ var _ = Describe("Pipeline", func() {
 		Context("happy path", func() {
 			It("calls the 'transform' function and returns values and errors", func() {
 				inC := make(chan int, 4)
-				for
+				for i := 0; i < 4; i++ {
+					inC <- i
+				}
+				close(inC)
+
+				outC, errC := pl.Stage(context.Background(), 1, i
