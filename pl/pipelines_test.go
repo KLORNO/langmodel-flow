@@ -34,4 +34,7 @@ var _ = Describe("Pipeline", func() {
 					return i * 2, nil
 				})
 
-				Expect(<-errC).To(MatchError("even numbe
+				Expect(<-errC).To(MatchError("even number"))
+				Expect(<-outC).To(Equal(2))
+				Expect(<-errC).To(MatchError("even number"))
+				Exp
