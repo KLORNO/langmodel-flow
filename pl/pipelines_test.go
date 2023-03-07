@@ -40,4 +40,9 @@ var _ = Describe("Pipeline", func() {
 				Expect(<-outC).To(Equal(6))
 
 				Eventually(outC).Should(BeClosed())
-				Eventually(errC).Should(BeClo
+				Eventually(errC).Should(BeClosed())
+			})
+		})
+		Context("Multiple workers", func() {
+			const maxWorkers = 2
+			con
