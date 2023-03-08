@@ -45,4 +45,6 @@ var _ = Describe("Pipeline", func() {
 		})
 		Context("Multiple workers", func() {
 			const maxWorkers = 2
-			con
+			const numJobs = 100
+			It("starts multiple workers, respecting the limit", func() {
+				inC := make(c
