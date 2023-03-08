@@ -47,4 +47,10 @@ var _ = Describe("Pipeline", func() {
 			const maxWorkers = 2
 			const numJobs = 100
 			It("starts multiple workers, respecting the limit", func() {
-				inC := make(c
+				inC := make(chan int, numJobs)
+				for i := 0; i < numJobs; i++ {
+					inC <- i
+				}
+				close(inC)
+
+				current := ato
