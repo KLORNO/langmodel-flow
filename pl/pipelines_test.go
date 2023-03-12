@@ -56,4 +56,7 @@ var _ = Describe("Pipeline", func() {
 				current := atomic.Int32{}
 				count := atomic.Int32{}
 				max := atomic.Int32{}
-				outC, _ := pl.Stage(context.Background(), max
+				outC, _ := pl.Stage(context.Background(), maxWorkers, inC, func(ctx context.Context, in int) (int, error) {
+					defer current.Add(-1)
+					c := current.Add(1)
+					co
