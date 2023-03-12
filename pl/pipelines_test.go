@@ -59,4 +59,8 @@ var _ = Describe("Pipeline", func() {
 				outC, _ := pl.Stage(context.Background(), maxWorkers, inC, func(ctx context.Context, in int) (int, error) {
 					defer current.Add(-1)
 					c := current.Add(1)
-					co
+					count.Add(1)
+					if c > max.Load() {
+						max.Store(c)
+					}
+					time.Sleep(10 * time.Millisecond) 
