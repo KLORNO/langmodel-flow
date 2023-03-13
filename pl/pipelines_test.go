@@ -67,4 +67,8 @@ var _ = Describe("Pipeline", func() {
 					return 0, nil
 				})
 				// Discard output and wait for completion
-			
+				for range outC {
+				}
+
+				Expect(count.Load()).To(Equal(int32(numJobs)))
+				Expect(current.Load()).To(
