@@ -63,4 +63,8 @@ var _ = Describe("Pipeline", func() {
 					if c > max.Load() {
 						max.Store(c)
 					}
-					time.Sleep(10 * time.Millisecond) 
+					time.Sleep(10 * time.Millisecond) // Slow process
+					return 0, nil
+				})
+				// Discard output and wait for completion
+			
