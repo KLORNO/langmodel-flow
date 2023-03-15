@@ -71,4 +71,8 @@ var _ = Describe("Pipeline", func() {
 				}
 
 				Expect(count.Load()).To(Equal(int32(numJobs)))
-				Expect(current.Load()).To(
+				Expect(current.Load()).To(Equal(int32(0)))
+				Expect(max.Load()).To(Equal(int32(maxWorkers)))
+			})
+		})
+		When("the context 
