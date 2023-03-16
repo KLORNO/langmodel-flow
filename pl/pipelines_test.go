@@ -79,4 +79,9 @@ var _ = Describe("Pipeline", func() {
 			It("closes its output", func() {
 				ctx, cancel := context.WithCancel(context.Background())
 				inC := make(chan int)
-				outC, errC := pl.Stage(ctx, 1, inC, func(ctx context.Con
+				outC, errC := pl.Stage(ctx, 1, inC, func(ctx context.Context, i int) (int, error) {
+					return i, nil
+				})
+				cancel()
+				Eventually(outC).Should(BeClosed())
+				Eventually(er
