@@ -84,4 +84,11 @@ var _ = Describe("Pipeline", func() {
 				})
 				cancel()
 				Eventually(outC).Should(BeClosed())
-				Eventually(er
+				Eventually(errC).Should(BeClosed())
+			})
+		})
+
+	})
+	Describe("Merge", func() {
+		var in1, in2 chan int
+		B
