@@ -75,4 +75,6 @@ var _ = Describe("Pipeline", func() {
 				Expect(max.Load()).To(Equal(int32(maxWorkers)))
 			})
 		})
-		When("the context 
+		When("the context is canceled", func() {
+			It("closes its output", func() {
+				ctx, cancel := context.WithCancel
