@@ -94,4 +94,11 @@ var _ = Describe("Pipeline", func() {
 		BeforeEach(func() {
 			in1 = make(chan int, 4)
 			in2 = make(chan int, 4)
-			for i := 0; i < 4; i
+			for i := 0; i < 4; i++ {
+				in1 <- i
+				in2 <- i + 4
+			}
+			close(in1)
+			close(in2)
+		})
+		When("ranging through the out
