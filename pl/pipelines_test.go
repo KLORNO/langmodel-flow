@@ -91,4 +91,7 @@ var _ = Describe("Pipeline", func() {
 	})
 	Describe("Merge", func() {
 		var in1, in2 chan int
-		B
+		BeforeEach(func() {
+			in1 = make(chan int, 4)
+			in2 = make(chan int, 4)
+			for i := 0; i < 4; i
