@@ -102,4 +102,6 @@ var _ = Describe("Pipeline", func() {
 			close(in2)
 		})
 		When("ranging through the output channel", func() {
-			It("copies values from all input channels to its output chan
+			It("copies values from all input channels to its output channel", func() {
+				var values []int
+				for v := range pl.Merge(context.Background(), in1, 
