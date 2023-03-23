@@ -108,4 +108,8 @@ var _ = Describe("Pipeline", func() {
 					values = append(values, v)
 				}
 
-				Expect(values).To(ConsistOf(0, 1, 2, 3,
+				Expect(values).To(ConsistOf(0, 1, 2, 3, 4, 5, 6, 7))
+			})
+		})
+		When("there's a blocked channel and the context is closed", func() {
+			It
