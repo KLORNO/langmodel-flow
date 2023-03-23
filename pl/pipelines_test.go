@@ -101,4 +101,5 @@ var _ = Describe("Pipeline", func() {
 			close(in1)
 			close(in2)
 		})
-		When("ranging through the out
+		When("ranging through the output channel", func() {
+			It("copies values from all input channels to its output chan
