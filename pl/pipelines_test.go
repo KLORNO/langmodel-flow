@@ -114,4 +114,8 @@ var _ = Describe("Pipeline", func() {
 		When("there's a blocked channel and the context is closed", func() {
 			It("closes its output", func() {
 				ctx, cancel := context.WithCancel(context.Background())
-				in3 := 
+				in3 := make(chan int)
+				out := pl.Merge(ctx, in1, in2, in3)
+				cancel()
+				Eventually(out).Should(BeClosed())
+		
