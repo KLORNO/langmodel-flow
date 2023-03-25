@@ -112,4 +112,6 @@ var _ = Describe("Pipeline", func() {
 			})
 		})
 		When("there's a blocked channel and the context is closed", func() {
-			It
+			It("closes its output", func() {
+				ctx, cancel := context.WithCancel(context.Background())
+				in3 := 
