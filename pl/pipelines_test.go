@@ -118,4 +118,9 @@ var _ = Describe("Pipeline", func() {
 				out := pl.Merge(ctx, in1, in2, in3)
 				cancel()
 				Eventually(out).Should(BeClosed())
-		
+			})
+		})
+	})
+	Describe("ReadOrDone", func() {
+		When("values are sent", func() {
+			It("copies them to its output c
