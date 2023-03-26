@@ -126,4 +126,10 @@ var _ = Describe("Pipeline", func() {
 			It("copies them to its output channel", func() {
 				in := make(chan int)
 				out := pl.ReadOrDone(context.Background(), in)
-		
+				for i := 0; i < 4; i++ {
+					in <- i
+					j := <-out
+					Expect(i).To(Equal(j))
+				}
+				close(in)
+				Even
