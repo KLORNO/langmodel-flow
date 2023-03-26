@@ -132,4 +132,8 @@ var _ = Describe("Pipeline", func() {
 					Expect(i).To(Equal(j))
 				}
 				close(in)
-				Even
+				Eventually(out).Should(BeClosed())
+			})
+		})
+		When("the context is canceled", func() {
+			It("c
