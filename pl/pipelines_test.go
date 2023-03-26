@@ -123,4 +123,7 @@ var _ = Describe("Pipeline", func() {
 	})
 	Describe("ReadOrDone", func() {
 		When("values are sent", func() {
-			It("copies them to its output c
+			It("copies them to its output channel", func() {
+				in := make(chan int)
+				out := pl.ReadOrDone(context.Background(), in)
+		
