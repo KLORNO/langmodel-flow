@@ -139,4 +139,8 @@ var _ = Describe("Pipeline", func() {
 			It("closes its output", func() {
 				ctx, cancel := context.WithCancel(context.Background())
 				in := make(chan int)
-			
+				out := pl.ReadOrDone(ctx, in)
+				cancel()
+				Eventually(out).Should(BeClosed())
+			})
+		})
