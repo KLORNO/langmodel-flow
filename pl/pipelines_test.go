@@ -144,3 +144,7 @@ var _ = Describe("Pipeline", func() {
 				Eventually(out).Should(BeClosed())
 			})
 		})
+	})
+	Describe("SendOrDone", func() {
+		When("out is unblocked", func() {
+			It("puts the value in the channe
