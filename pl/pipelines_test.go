@@ -147,4 +147,7 @@ var _ = Describe("Pipeline", func() {
 	})
 	Describe("SendOrDone", func() {
 		When("out is unblocked", func() {
-			It("puts the value in the channe
+			It("puts the value in the channel", func() {
+				out := make(chan int)
+				value := 1234
+				go pl.SendOrDone(context.Background(), out, value)
