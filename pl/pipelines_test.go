@@ -151,3 +151,8 @@ var _ = Describe("Pipeline", func() {
 				out := make(chan int)
 				value := 1234
 				go pl.SendOrDone(context.Background(), out, value)
+				Eventually(out).Should(Receive(&value))
+			})
+		})
+		When("out is blocked", func() {
+			It("can be canceled by
