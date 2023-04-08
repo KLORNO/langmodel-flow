@@ -158,4 +158,11 @@ var _ = Describe("Pipeline", func() {
 			It("can be canceled by the context", func() {
 				ctx, cancel := context.WithCancel(context.Background())
 				out := make(chan int)
-				go
+				go pl.SendOrDone(ctx, out, 1234)
+				cancel()
+
+				Consistently(out).ShouldNot(Receive())
+			})
+		})
+	})
+})
