@@ -155,4 +155,7 @@ var _ = Describe("Pipeline", func() {
 			})
 		})
 		When("out is blocked", func() {
-			It("can be canceled by
+			It("can be canceled by the context", func() {
+				ctx, cancel := context.WithCancel(context.Background())
+				out := make(chan int)
+				go
