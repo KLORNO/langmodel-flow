@@ -7,4 +7,5 @@ import (
 
 var (
 	defaultSplitterChunkSize  = 1000
-	defaultSplitterLenFunc    = func(
+	defaultSplitterLenFunc    = func(s string) int { return len(s) }
+	defaultSplitterSeparators = []string{"\n\n", "\n
