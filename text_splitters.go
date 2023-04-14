@@ -13,4 +13,6 @@ var (
 
 // SplitterOptions for the RecursiveTextSplitter splitter
 type SplitterOptions struct {
-	//
+	// ChunkSize is the maximum size of each chunk
+	ChunkSize int
+	// ChunkOverlap is the number of c
