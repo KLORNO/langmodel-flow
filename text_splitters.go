@@ -15,4 +15,6 @@ var (
 type SplitterOptions struct {
 	// ChunkSize is the maximum size of each chunk
 	ChunkSize int
-	// ChunkOverlap is the number of c
+	// ChunkOverlap is the number of characters that will be repeated in each
+	ChunkOverlap int
+	// LenFunc is the length functi
