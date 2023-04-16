@@ -17,4 +17,6 @@ type SplitterOptions struct {
 	ChunkSize int
 	// ChunkOverlap is the number of characters that will be repeated in each
 	ChunkOverlap int
-	// LenFunc is the length functi
+	// LenFunc is the length function to be used to calculate the chunk size
+	LenFunc func(string) int
+	// Separators is a list of strings that will 
