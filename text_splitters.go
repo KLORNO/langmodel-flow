@@ -19,4 +19,8 @@ type SplitterOptions struct {
 	ChunkOverlap int
 	// LenFunc is the length function to be used to calculate the chunk size
 	LenFunc func(string) int
-	// Separators is a list of strings that will 
+	// Separators is a list of strings that will be used to split the text
+	Separators []string
+}
+
+// RecursiveTextSplitter splits a text into chunks o
