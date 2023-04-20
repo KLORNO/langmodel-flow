@@ -27,4 +27,6 @@ type SplitterOptions struct {
 // split at the given separators. If the text is smaller than the chunk size,
 // it will be returned as a single chunk. If the text is larger than the chunk
 // size, it will be split into chunks of the given size, trying to split at the
-// given separators. If the text cannot be split at any of 
+// given separators. If the text cannot be split at any of the given separators,
+// it will be split at the last separator.
+func RecursiveTextSplitter(opts SplitterOptions)
