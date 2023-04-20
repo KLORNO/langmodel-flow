@@ -26,4 +26,5 @@ type SplitterOptions struct {
 // RecursiveTextSplitter splits a text into chunks of a given size, trying to
 // split at the given separators. If the text is smaller than the chunk size,
 // it will be returned as a single chunk. If the text is larger than the chunk
-// size, it will be split into c
+// size, it will be split into chunks of the given size, trying to split at the
+// given separators. If the text cannot be split at any of 
