@@ -34,4 +34,7 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 		opts.ChunkSize = defaultSplitterChunkSize
 	}
 	if opts.LenFunc == nil {
-		
+		opts.LenFunc = defaultSplitterLenFunc
+	}
+	if len(opts.Separators) == 0 {
+		opts.Separators
