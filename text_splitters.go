@@ -29,4 +29,9 @@ type SplitterOptions struct {
 // size, it will be split into chunks of the given size, trying to split at the
 // given separators. If the text cannot be split at any of the given separators,
 // it will be split at the last separator.
-func RecursiveTextSplitter(opts SplitterOptions)
+func RecursiveTextSplitter(opts SplitterOptions) Splitter {
+	if opts.ChunkSize == 0 {
+		opts.ChunkSize = defaultSplitterChunkSize
+	}
+	if opts.LenFunc == nil {
+		
