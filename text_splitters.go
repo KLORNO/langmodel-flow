@@ -37,4 +37,8 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 		opts.LenFunc = defaultSplitterLenFunc
 	}
 	if len(opts.Separators) == 0 {
-		opts.Separators
+		opts.Separators = defaultSplitterSeparators
+	}
+	var splitter Splitter
+	splitter = func(text string) ([]string, error) {
+		var separator st
