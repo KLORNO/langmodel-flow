@@ -46,4 +46,9 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 			if s == "" || strings.Contains(text, s) {
 				separator = s
 				break
-		
+			}
+		}
+
+		splits := strings.Split(text, separator)
+		var finalChunks []string
+		var goodSpli
