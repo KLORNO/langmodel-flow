@@ -57,4 +57,8 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 				goodSplits = append(goodSplits, split)
 			} else {
 				if len(goodSplits) > 0 {
-					mergedText := mergeSplits(goodSplits, separator, opts.ChunkSize, opts.ChunkOverlap, opts.LenFunc) // Pass LenFu
+					mergedText := mergeSplits(goodSplits, separator, opts.ChunkSize, opts.ChunkOverlap, opts.LenFunc) // Pass LenFunc
+					finalChunks = append(finalChunks, mergedText...)
+					goodSplits = nil
+				}
+				other
