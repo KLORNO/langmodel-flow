@@ -54,4 +54,7 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 		var goodSplits []string
 		for _, split := range splits {
 			if opts.LenFunc(split) < opts.ChunkSize { // Use LenFunc here
-		
+				goodSplits = append(goodSplits, split)
+			} else {
+				if len(goodSplits) > 0 {
+					mer
