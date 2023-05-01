@@ -65,4 +65,9 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 				if err != nil {
 					return nil, err
 				}
-				finalChunks = ap
+				finalChunks = append(finalChunks, otherInfo...)
+			}
+		}
+
+		if len(goodSplits) > 0 {
+			mergedText := mergeSplits(
