@@ -71,4 +71,11 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 
 		if len(goodSplits) > 0 {
 			mergedText := mergeSplits(goodSplits, separator, opts.ChunkSize, opts.ChunkOverlap, opts.LenFunc) // Pass LenFunc
-			finalChunks = app
+			finalChunks = append(finalChunks, mergedText...)
+		}
+		return finalChunks, nil
+	}
+	return splitter
+}
+
+// Markdown
