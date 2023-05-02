@@ -79,4 +79,5 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 }
 
 // MarkdownSplitter returns a Splitter that splits a document into chunks using a set
-// of MarkdownSplitter-specific se
+// of MarkdownSplitter-specific separators. It is a recursive splitter, meaning that
+// it will split each chunk into smaller 
