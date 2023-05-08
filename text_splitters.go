@@ -82,4 +82,8 @@ func RecursiveTextSplitter(opts SplitterOptions) Splitter {
 // of MarkdownSplitter-specific separators. It is a recursive splitter, meaning that
 // it will split each chunk into smaller chunks using the same separators.
 func MarkdownSplitter(opts SplitterOptions) Splitter {
-	opts.Separators = []string
+	opts.Separators = []string{
+		// First, try to split along MarkdownSplitter headings (starting with level 2)
+		"\n## ",
+		"\n### ",
+		
