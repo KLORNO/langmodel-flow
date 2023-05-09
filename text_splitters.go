@@ -86,4 +86,7 @@ func MarkdownSplitter(opts SplitterOptions) Splitter {
 		// First, try to split along MarkdownSplitter headings (starting with level 2)
 		"\n## ",
 		"\n### ",
-		
+		"\n#### ",
+		"\n##### ",
+		"\n###### ",
+		// Note the alternative syntax for headings (below) is not hand
