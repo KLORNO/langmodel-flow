@@ -89,4 +89,9 @@ func MarkdownSplitter(opts SplitterOptions) Splitter {
 		"\n#### ",
 		"\n##### ",
 		"\n###### ",
-		// Note the alternative syntax for headings (below) is not hand
+		// Note the alternative syntax for headings (below) is not handled here
+		// Heading level 2
+		// ---------------
+		// End of code block
+		"```\n\n",
+		// Horizontal lines
