@@ -108,4 +108,8 @@ func MarkdownSplitter(opts SplitterOptions) Splitter {
 	return RecursiveTextSplitter(opts)
 }
 
-func joinDocs(docs []string, separator str
+func joinDocs(docs []string, separator string) string {
+	return strings.TrimSpace(strings.Join(docs, separator))
+}
+
+func mergeSplits(splits []string,
