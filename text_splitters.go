@@ -98,4 +98,7 @@ func MarkdownSplitter(opts SplitterOptions) Splitter {
 		"\n\n***\n\n",
 		"\n\n---\n\n",
 		"\n\n___\n\n",
-		// Note that this splitter doesn't handle horizonta
+		// Note that this splitter doesn't handle horizontal lines defined
+		// by *three or more* of ***, ---, or ___, but this is not handled
+		"\n\n",
+	
