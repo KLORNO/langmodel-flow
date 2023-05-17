@@ -101,4 +101,11 @@ func MarkdownSplitter(opts SplitterOptions) Splitter {
 		// Note that this splitter doesn't handle horizontal lines defined
 		// by *three or more* of ***, ---, or ___, but this is not handled
 		"\n\n",
-	
+		"\n",
+		" ",
+		"",
+	}
+	return RecursiveTextSplitter(opts)
+}
+
+func joinDocs(docs []string, separator str
