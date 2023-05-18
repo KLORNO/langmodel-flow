@@ -112,4 +112,4 @@ func joinDocs(docs []string, separator string) string {
 	return strings.TrimSpace(strings.Join(docs, separator))
 }
 
-func mergeSplits(splits []string,
+func mergeSplits(splits []string, separator string, chunkSize int, chunkOverlap int, lenFunc func(string) int) []string
