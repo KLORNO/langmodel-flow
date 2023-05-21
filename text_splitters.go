@@ -117,4 +117,7 @@ func mergeSplits(splits []string, separator string, chunkSize int, chunkOverlap 
 	var currentDoc []string
 	total := 0
 
-	for _, d := range spl
+	for _, d := range splits {
+		length := lenFunc(d) // Use LenFunc here
+		if total+length >= chunkSize {
+			if total > chu
