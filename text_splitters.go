@@ -120,4 +120,5 @@ func mergeSplits(splits []string, separator string, chunkSize int, chunkOverlap 
 	for _, d := range splits {
 		length := lenFunc(d) // Use LenFunc here
 		if total+length >= chunkSize {
-			if total > chu
+			if total > chunkSize {
+				log.Printf("Created a chunk of size %d, which is longer than the specified %d\n", to
