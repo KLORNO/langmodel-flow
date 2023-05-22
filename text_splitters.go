@@ -121,4 +121,8 @@ func mergeSplits(splits []string, separator string, chunkSize int, chunkOverlap 
 		length := lenFunc(d) // Use LenFunc here
 		if total+length >= chunkSize {
 			if total > chunkSize {
-				log.Printf("Created a chunk of size %d, which is longer than the specified %d\n", to
+				log.Printf("Created a chunk of size %d, which is longer than the specified %d\n", total, chunkSize)
+			}
+			if len(currentDoc) > 0 {
+				doc := joinDocs(currentDoc, separator)
+				i
