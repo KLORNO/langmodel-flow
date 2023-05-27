@@ -128,4 +128,6 @@ func mergeSplits(splits []string, separator string, chunkSize int, chunkOverlap 
 				if doc != "" {
 					docs = append(docs, doc)
 				}
-				for total > chunkOverlap || (total+length 
+				for total > chunkOverlap || (total+length > chunkSize && total > 0) {
+					total -= lenFunc(currentDoc[0]) // Use LenFunc here
+					currentDoc = currentDoc
