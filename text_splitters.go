@@ -138,4 +138,9 @@ func mergeSplits(splits []string, separator string, chunkSize int, chunkOverlap 
 		total += length
 	}
 
-	doc := joinDocs(currentDoc
+	doc := joinDocs(currentDoc, separator)
+	if doc != "" {
+		docs = append(docs, doc)
+	}
+	return docs
+}
