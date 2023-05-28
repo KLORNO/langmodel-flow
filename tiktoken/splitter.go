@@ -2,4 +2,5 @@ package tiktoken
 
 import "github.com/deluan/flowllm"
 
-fu
+func Splitter(model string, options flowllm.SplitterOptions) flowllm.Splitter {
+	lenFunc := Len(mod
