@@ -6,4 +6,5 @@ func Splitter(model string, options flowllm.SplitterOptions) flowllm.Splitter {
 	lenFunc := Len(model)
 	options.LenFunc = lenFunc
 	options.Separators = []string{"\n"}
-	return flowllm.Recurs
+	return flowllm.RecursiveTextSplitter(options)
+}
