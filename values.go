@@ -8,4 +8,8 @@ import (
 )
 
 const (
-	DefaultKey     = "text
+	DefaultKey     = "text"
+	DefaultChatKey = "_chat_messages"
+)
+
+// Values is a map of string to any value. This is
