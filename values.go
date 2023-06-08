@@ -12,4 +12,7 @@ const (
 	DefaultChatKey = "_chat_messages"
 )
 
-// Values is a map of string to any value. This is
+// Values is a map of string to any value. This is the type used to pass values between handlers.
+type Values map[string]any
+
+// Merge merges m
