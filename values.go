@@ -29,4 +29,6 @@ func (value Values) Merge(values ...Values) Values {
 	return res
 }
 
-// Get returns the value for a given key as a string. If the key does not ex
+// Get returns the value for a given key as a string. If the key does not exist, it returns an empty string.
+func (value Values) Get(key string) string {
+	v, ok := value[
