@@ -18,4 +18,10 @@ type Values map[string]any
 // Merge merges multiple Values into one.
 func (value Values) Merge(values ...Values) Values {
 	res := Values{}
-	for k, v := 
+	for k, v := range value {
+		res[k] = v
+	}
+	for _, v := range values {
+		for k, vv := range v {
+			res[k] = vv
+	
