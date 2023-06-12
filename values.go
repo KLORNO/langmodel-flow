@@ -24,4 +24,9 @@ func (value Values) Merge(values ...Values) Values {
 	for _, v := range values {
 		for k, vv := range v {
 			res[k] = vv
-	
+		}
+	}
+	return res
+}
+
+// Get returns the value for a given key as a string. If the key does not ex
