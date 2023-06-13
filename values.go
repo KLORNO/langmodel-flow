@@ -44,4 +44,5 @@ func (value Values) Keys() []string {
 }
 
 // String returns a string representation of the Values object. If the Values object has only one key,
-// it returns t
+// it returns the value of that key. If the Values object has multiple keys, it returns a JSON representation.
+func 
