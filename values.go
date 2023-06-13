@@ -38,4 +38,9 @@ func (value Values) Get(key string) string {
 	return fmt.Sprintf("%v", v)
 }
 
-// Keys returns the keys of the Values 
+// Keys returns the keys of the Values object.
+func (value Values) Keys() []string {
+	return maps.Keys(value)
+}
+
+// String returns
