@@ -31,4 +31,11 @@ func (value Values) Merge(values ...Values) Values {
 
 // Get returns the value for a given key as a string. If the key does not exist, it returns an empty string.
 func (value Values) Get(key string) string {
-	v, ok := value[
+	v, ok := value[key]
+	if !ok {
+		return ""
+	}
+	return fmt.Sprintf("%v", v)
+}
+
+// Keys returns the keys of the Values 
