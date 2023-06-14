@@ -49,4 +49,9 @@ func (value Values) String() string {
 	if len(value) == 0 {
 		return ""
 	}
-	if v, ok := v
+	if v, ok := value[DefaultKey]; ok {
+		return v.(string)
+	}
+	if len(value) == 1 {
+		for _, v := range value {
+			return v.(s
