@@ -54,4 +54,9 @@ func (value Values) String() string {
 	}
 	if len(value) == 1 {
 		for _, v := range value {
-			return v.(s
+			return v.(string)
+		}
+	}
+	j, _ := json.MarshalIndent(value, "", "  ")
+	return string(j)
+}
