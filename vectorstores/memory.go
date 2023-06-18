@@ -51,3 +51,35 @@ func (m *Memory) SimilaritySearchVectorWithScore(_ context.Context, query []floa
 	for _, item := range m.data {
 		similarity := CosineSimilarity(query, item.vector)
 		results = append(results, flowllm.ScoredDocument{
+			Document: flowllm.Document{
+				PageContent: item.content,
+				Metadata:    item.metadata,
+			},
+			Score: similarity,
+		})
+	}
+	slices.SortFunc(results, func(a, b flowllm.ScoredDocument) bool {
+		return a.Score > b.Score
+	})
+	k = min(k, len(results))
+	return results[0:k], nil
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func (m *Memory) addVectors(vectors [][]float32, documents []flowllm.Document) {
+	var memoryVectors []memoryItem
+	for i, vector := range vectors {
+		memoryVectors = append(memoryVectors, memoryItem{
+			content:  documents[i].PageContent,
+			vector:   vector,
+			metadata: documents[i].Metadata,
+		})
+	}
+	m.data = append(m.data, memoryVectors...)
+}
