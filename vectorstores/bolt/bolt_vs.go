@@ -115,3 +115,62 @@ func (s *VectorStore) AddDocuments(ctx context.Context, documents ...flowllm.Doc
 }
 
 type match struct {
+	id         []byte
+	similarity float32
+}
+
+func (s *VectorStore) SimilaritySearch(ctx context.Context, query string, k int) ([]flowllm.Document, error) {
+	return vectorstores.SimilaritySearch(ctx, s, s.embeddings, query, k)
+}
+
+func (s *VectorStore) SimilaritySearchVectorWithScore(_ context.Context, query []float32, k int) ([]flowllm.ScoredDocument, error) {
+	var matches []match
+	err := s.db.View(func(tx *bbolt.Tx) error {
+		bucket := tx.Bucket([]byte(s.bucket))
+		return bucket.ForEach(func(k, v []byte) error {
+			var item boltItem
+			err := json.Unmarshal(v, &item)
+			if err != nil {
+				return err
+			}
+			similarity := vectorstores.CosineSimilarity(query, item.Vectors)
+			matches = append(matches, match{id: k, similarity: similarity})
+			return nil
+		})
+	})
+	if err != nil {
+		return nil, err
+	}
+	slices.SortFunc(matches, func(a, b match) bool {
+		return a.similarity > b.similarity
+	})
+	k = min(k, len(matches))
+	matches = matches[:k]
+	var results []flowllm.ScoredDocument
+	err = s.db.View(func(tx *bbolt.Tx) error {
+		bucket := tx.Bucket([]byte(s.bucket))
+		for _, match := range matches {
+			var item boltItem
+			err := json.Unmarshal(bucket.Get(match.id), &item)
+			if err != nil {
+				return err
+			}
+			results = append(results, flowllm.ScoredDocument{
+				Score: match.similarity,
+				Document: flowllm.Document{
+					PageContent: item.Content,
+					Metadata:    item.Metadata,
+				},
+			})
+		}
+		return nil
+	})
+	return results, err
+}
+
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
