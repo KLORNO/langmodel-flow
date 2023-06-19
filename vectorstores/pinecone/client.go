@@ -61,3 +61,16 @@ func doRequest(ctx context.Context, payload any, url, apiKey string) (io.ReadClo
 	req, err := http.NewRequestWithContext(ctx, "POST", url, body)
 	if err != nil {
 		return nil, 0, err
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("accept", "text/plain")
+	req.Header.Set("Api-Key", apiKey)
+
+	r, err := http.DefaultClient.Do(req)
+	if err != nil {
+		return nil, 0, err
+	}
+
+	return r.Body, r.StatusCode, nil
+}
