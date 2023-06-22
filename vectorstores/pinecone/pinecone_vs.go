@@ -93,3 +93,64 @@ func (s *VectorStore) AddDocuments(ctx context.Context, documents ...flowllm.Doc
 		curMetadata := make(map[string]string)
 		for key, value := range documents[i].Metadata {
 			curMetadata[key] = fmt.Sprintf("%s", value)
+		}
+
+		curMetadata[s.textKey] = documents[i].PageContent
+
+		items = append(items, pineconeItem{
+			Values:   vectors[i],
+			Metadata: curMetadata,
+			ID:       fmt.Sprintf("%x", sha256.Sum256([]byte(fmt.Sprintf("%v", curMetadata)))),
+		})
+	}
+
+	return s.client.upsert(ctx, items)
+}
+
+func (s *VectorStore) SimilaritySearch(ctx context.Context, query string, k int) ([]flowllm.Document, error) {
+	return vectorstores.SimilaritySearch(ctx, s, s.embeddings, query, k)
+}
+
+func (s *VectorStore) SimilaritySearchVectorWithScore(ctx context.Context, query []float32, k int) ([]flowllm.ScoredDocument, error) {
+	queryResponse, err := s.client.query(ctx, query, k)
+	if err != nil {
+		return nil, err
+	}
+
+	var resultDocuments []flowllm.ScoredDocument
+	for _, match := range queryResponse.Matches {
+		pageContent, ok := match.Metadata[s.textKey]
+		if !ok {
+			return nil, fmt.Errorf("missing textKey %s in query response match", s.textKey)
+		}
+
+		metadata := make(map[string]any)
+		for key, value := range match.Metadata {
+			if key == s.textKey {
+				continue
+			}
+			metadata[key] = value
+		}
+
+		resultDocuments = append(resultDocuments, flowllm.ScoredDocument{
+			Document: flowllm.Document{
+				PageContent: pageContent,
+				Metadata:    metadata,
+			},
+			Score: match.Score,
+		})
+	}
+	slices.SortFunc(resultDocuments, func(a, b flowllm.ScoredDocument) bool {
+		return a.Score > b.Score
+	})
+
+	return resultDocuments, nil
+}
+
+type Metric string
+
+const (
+	Euclidean  Metric = "euclidean"
+	Cosine     Metric = "cosine"
+	DotProduct Metric = "dotproduct"
+)
