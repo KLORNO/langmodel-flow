@@ -39,3 +39,20 @@ func (c *client) query(ctx context.Context, vector []float32, numVectors int) (q
 		TopK:            numVectors,
 		Namespace:       c.namespace,
 	}
+
+	body, statusCode, err := doRequest(ctx, payload, c.getEndpoint()+"/query", c.apiKey)
+	if err != nil {
+		return queriesResponse{}, err
+	}
+	defer body.Close()
+
+	if statusCode != http.StatusOK {
+		return queriesResponse{}, errorMessageFromErrorResponse("querying index", body)
+	}
+
+	var response queriesResponse
+
+	decoder := json.NewDecoder(body)
+	err = decoder.Decode(&response)
+	return response, err
+}
