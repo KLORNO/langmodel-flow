@@ -18,4 +18,7 @@ type upsertPayload struct {
 	Namespace string         `json:"namespace,omitempty"`
 }
 
-func errorMessageFromErrorResp
+func errorMessageFromErrorResponse(task string, body io.Reader) error {
+	buf := new(bytes.Buffer)
+	_, err := io.Copy(buf, body)
+	if err !=
