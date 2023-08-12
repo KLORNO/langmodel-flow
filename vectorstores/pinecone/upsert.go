@@ -21,4 +21,8 @@ type upsertPayload struct {
 func errorMessageFromErrorResponse(task string, body io.Reader) error {
 	buf := new(bytes.Buffer)
 	_, err := io.Copy(buf, body)
-	if err !=
+	if err != nil {
+		return fmt.Errorf("error reading body of error message: %w", err)
+	}
+
+	return fmt.Errorf("error %s
