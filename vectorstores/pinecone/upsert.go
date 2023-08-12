@@ -14,4 +14,8 @@ type pineconeItem struct {
 }
 
 type upsertPayload struct {
-	Vectors   []pineconeItem `json:"vector
+	Vectors   []pineconeItem `json:"vectors"`
+	Namespace string         `json:"namespace,omitempty"`
+}
+
+func errorMessageFromErrorResp
