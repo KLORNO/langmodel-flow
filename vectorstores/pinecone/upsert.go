@@ -25,4 +25,7 @@ func errorMessageFromErrorResponse(task string, body io.Reader) error {
 		return fmt.Errorf("error reading body of error message: %w", err)
 	}
 
-	return fmt.Errorf("error %s
+	return fmt.Errorf("error %s: body: %s", task, buf.String())
+}
+
+func (c *client) upsert(ctx context.Context, vector
