@@ -28,4 +28,10 @@ func errorMessageFromErrorResponse(task string, body io.Reader) error {
 	return fmt.Errorf("error %s: body: %s", task, buf.String())
 }
 
-func (c *client) upsert(ctx context.Context, vector
+func (c *client) upsert(ctx context.Context, vectors []pineconeItem) error {
+	payload := upsertPayload{
+		Vectors:   vectors,
+		Namespace: c.namespace,
+	}
+
+	body, 
