@@ -34,4 +34,6 @@ func (c *client) upsert(ctx context.Context, vectors []pineconeItem) error {
 		Namespace: c.namespace,
 	}
 
-	body, 
+	body, status, err := doRequest(ctx, payload, c.getEndpoint()+"/vectors/upsert", c.apiKey)
+	if err != nil {
+		r
