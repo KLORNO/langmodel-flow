@@ -36,4 +36,12 @@ func (c *client) upsert(ctx context.Context, vectors []pineconeItem) error {
 
 	body, status, err := doRequest(ctx, payload, c.getEndpoint()+"/vectors/upsert", c.apiKey)
 	if err != nil {
-		r
+		return err
+	}
+	defer body.Close()
+
+	if status == 200 {
+		return nil
+	}
+
+	return errorMessageFromErrorRespons
