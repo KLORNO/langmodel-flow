@@ -44,4 +44,5 @@ func (c *client) upsert(ctx context.Context, vectors []pineconeItem) error {
 		return nil
 	}
 
-	return errorMessageFromErrorRespons
+	return errorMessageFromErrorResponse("upserting vectors", body)
+}
