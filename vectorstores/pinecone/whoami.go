@@ -9,4 +9,8 @@ import (
 
 type whoAmIResponse struct {
 	ProjectName string `json:"project_name"`
-	UserLabe
+	UserLabel   string `json:"user_label"`
+	UserName    string `json:"user_name"`
+}
+
+func (c *cli
