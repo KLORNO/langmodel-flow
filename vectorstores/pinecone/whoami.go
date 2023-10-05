@@ -13,4 +13,5 @@ type whoAmIResponse struct {
 	UserName    string `json:"user_name"`
 }
 
-func (c *cli
+func (c *client) whoAmI(ctx context.Context) (string, error) {
+	req, err := http.NewRequestWithContext(ctx, "GET", fm
