@@ -16,4 +16,10 @@ type whoAmIResponse struct {
 func (c *client) whoAmI(ctx context.Context) (string, error) {
 	req, err := http.NewRequestWithContext(ctx, "GET", fmt.Sprintf("https://controller.%s.pinecone.io/actions/whoami", c.environment), nil)
 	if err != nil {
-		ret
+		return "", err
+	}
+
+	req.Header.Set("Api-Key", c.apiKey)
+
+	r, err := http.DefaultClient.Do(req)
+	if err != 
