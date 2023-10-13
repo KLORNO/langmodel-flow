@@ -22,4 +22,11 @@ func (c *client) whoAmI(ctx context.Context) (string, error) {
 	req.Header.Set("Api-Key", c.apiKey)
 
 	r, err := http.DefaultClient.Do(req)
-	if err != 
+	if err != nil {
+		return "", err
+	}
+	defer r.Body.Close()
+
+	var response whoAmIResponse
+
+	decoder := jso
