@@ -29,4 +29,7 @@ func (c *client) whoAmI(ctx context.Context) (string, error) {
 
 	var response whoAmIResponse
 
-	decoder := jso
+	decoder := json.NewDecoder(r.Body)
+	err = decoder.Decode(&response)
+	return response.ProjectName, err
+}
