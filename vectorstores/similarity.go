@@ -15,3 +15,7 @@ func CosineSimilarity(a, b []float32) float32 {
 		p2 += a[i] * a[i]
 		q2 += b[i] * b[i]
 	}
+	if p2 == 0 || q2 == 0 {
+		return 0
+	}
+	return p / (float32(math.Sqrt(float64(p2))) * flo
