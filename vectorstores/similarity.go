@@ -18,4 +18,7 @@ func CosineSimilarity(a, b []float32) float32 {
 	if p2 == 0 || q2 == 0 {
 		return 0
 	}
-	return p / (float32(math.Sqrt(float64(p2))) * flo
+	return p / (float32(math.Sqrt(float64(p2))) * float32(math.Sqrt(float64(q2))))
+}
+
+// SimilaritySearch returns the k most similar documents to
