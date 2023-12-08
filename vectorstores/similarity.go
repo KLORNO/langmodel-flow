@@ -21,4 +21,5 @@ func CosineSimilarity(a, b []float32) float32 {
 	return p / (float32(math.Sqrt(float64(p2))) * float32(math.Sqrt(float64(q2))))
 }
 
-// SimilaritySearch returns the k most similar documents to
+// SimilaritySearch returns the k most similar documents to the given query. It uses the given
+// vector store's SimilaritySearchVectorWithScore met
