@@ -23,4 +23,5 @@ func CosineSimilarity(a, b []float32) float32 {
 
 // SimilaritySearch returns the k most similar documents to the given query. It uses the given
 // vector store's SimilaritySearchVectorWithScore method to perform the search.
-func SimilaritySearch(ctx context.Context, store flowllm.VectorStore, e
+func SimilaritySearch(ctx context.Context, store flowllm.VectorStore, embeddings flowllm.Embeddings, query string, k int) ([]flowllm.Document, error) {
+	queryVect
