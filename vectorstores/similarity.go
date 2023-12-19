@@ -30,4 +30,8 @@ func SimilaritySearch(ctx context.Context, store flowllm.VectorStore, embeddings
 	}
 	var docs []flowllm.Document
 	results, _ := store.SimilaritySearchVectorWithScore(ctx, queryVector, k)
-	for _, result := range re
+	for _, result := range results {
+		docs = append(docs, result.Document)
+	}
+	return docs, nil
+}
