@@ -7,4 +7,8 @@ import (
 )
 
 var _ = Describe("CosineSimilarity", func() {
-	It("should return 0 when both input vectors are empt
+	It("should return 0 when both input vectors are empty", func() {
+		var a []float32
+		var b []float32
+		Expect(CosineSimilarity(a, b)).To(Equal(float32(0)))
+	})
