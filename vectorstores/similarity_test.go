@@ -19,4 +19,7 @@ var _ = Describe("CosineSimilarity", func() {
 		Expect(CosineSimilarity(a, b)).To(Equal(float32(0)))
 	})
 
-	It("should return 1 when both input vec
+	It("should return 1 when both input vectors are the same", func() {
+		a := []float32{1, 2, 3}
+		b := []float32{1, 2, 3}
+		Expect(CosineS
