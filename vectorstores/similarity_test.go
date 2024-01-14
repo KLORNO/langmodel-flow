@@ -25,4 +25,7 @@ var _ = Describe("CosineSimilarity", func() {
 		Expect(CosineSimilarity(a, b)).To(BeNumerically("~", float32(1), 1e-6))
 	})
 
-	It("should return 0 when input vectors are orthog
+	It("should return 0 when input vectors are orthogonal", func() {
+		a := []float32{1, 0, 0}
+		b := []float32{0, 1, 0}
+		Expect(CosineSimilarity(a, b)).To(BeNu
