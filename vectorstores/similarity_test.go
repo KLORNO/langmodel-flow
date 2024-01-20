@@ -37,4 +37,7 @@ var _ = Describe("CosineSimilarity", func() {
 		Expect(CosineSimilarity(a, b)).To(BeNumerically("~", float32(-1), 1e-6))
 	})
 
-	It("should return the correct similarity for arbitr
+	It("should return the correct similarity for arbitrary vectors", func() {
+		a := []float32{1, 0, -1}
+		b := []float32{2, 2, 0}
+		expected :=
