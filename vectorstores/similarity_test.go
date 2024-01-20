@@ -32,4 +32,6 @@ var _ = Describe("CosineSimilarity", func() {
 	})
 
 	It("should return -1 when input vectors are opposite", func() {
-		a :=
+		a := []float32{1, 2, 3}
+		b := []float32{-1, -2, -3}
+		Expect(CosineSimilarity(a, b)).To(BeNumer
