@@ -47,3 +47,7 @@ var _ = Describe("CosineSimilarity", func() {
 	It("should handle vectors with different lengths", func() {
 		a := []float32{1, 2, 3, 4, 5}
 		b := []float32{1, 2, 3}
+		Expect(CosineSimilarity(a, b)).To(BeNumerically("~", float32(1), 1e-6))
+	})
+
+	It("should handle vectors with large
