@@ -50,4 +50,7 @@ var _ = Describe("CosineSimilarity", func() {
 		Expect(CosineSimilarity(a, b)).To(BeNumerically("~", float32(1), 1e-6))
 	})
 
-	It("should handle vectors with large
+	It("should handle vectors with large values", func() {
+		a := []float32{1e5, 2e5, 3e5}
+		b := []float32{1e5, 2e5, 3e5}
+		E
