@@ -7,4 +7,7 @@ import (
 	"testing"
 )
 
-func TestVectorStores(t *testing.T)
+func TestVectorStores(t *testing.T) {
+	RegisterFailHandler(Fail)
+	RunSpecs(t, "VectorStores Suite")
+}
