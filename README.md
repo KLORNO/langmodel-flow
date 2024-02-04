@@ -7,4 +7,4 @@
 
 > **NOTICE**: This is still a work-in-progress. The interfaces provided by this project are still subject to change.
 
-LangModel-Flow is a Go-based framework for building applications drawing on the stren
+LangModel-Flow is a Go-based framework for building applications drawing on the strength of language models. It leverages the patterns of composability and chain of responsibilit
