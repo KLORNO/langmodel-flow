@@ -5,4 +5,6 @@
 [![GoDoc](https://pkg.go.dev/badge/github.com/KLORNO/langmodel-flow)](https://pkg.go.dev/github.com/KLORNO/langmodel-flow)
 [![License](https://img.shields.io/github/license/KLORNO/langmodel-flow)](/LICENSE)
 
-> **NOTICE**: This is still a work-in-progress. The interfaces provided by this project 
+> **NOTICE**: This is still a work-in-progress. The interfaces provided by this project are still subject to change.
+
+LangModel-Flow is a Go-based framework for building applications drawing on the stren
