@@ -13,4 +13,4 @@ LangModel-Flow draws significant inspiration from the [LangChain](https://docs.l
 
 ## Usage
 
-In the example below, we employ LangModel-Flow to construct a basic c
+In the example below, we employ LangModel-Flow to construct a basic chain which generates a company name and slogan based on a product name. The application exploits
