@@ -9,4 +9,8 @@
 
 LangModel-Flow is a Go-based framework for building applications drawing on the strength of language models. It leverages the patterns of composability and chain of responsibility, and provides tools for accessing Language Model Learning (LLMs), building prompts, and chaining calls together. It even encompasses parsers and database integrations, making it ideal for developers working with language models.
 
-LangModel-Flow draws significant inspiration from the [LangChain](https://docs.lang
+LangModel-Flow draws significant inspiration from the [LangChain](https://docs.langchain.com/docs) project.
+
+## Usage
+
+In the example below, we employ LangModel-Flow to construct a basic c
