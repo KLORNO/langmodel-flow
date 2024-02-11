@@ -13,4 +13,11 @@ LangModel-Flow draws significant inspiration from the [LangChain](https://docs.l
 
 ## Usage
 
-In the example below, we employ LangModel-Flow to construct a basic chain which generates a company name and slogan based on a product name. The application exploits two distinct LLMs, one for the company name and the other for the slogan. The LLMs are called in parall
+In the example below, we employ LangModel-Flow to construct a basic chain which generates a company name and slogan based on a product name. The application exploits two distinct LLMs, one for the company name and the other for the slogan. The LLMs are called in parallel, and the results are subsequently amalgamated into a single output.
+
+```go
+package main
+
+import (
+    "context"
+ 
