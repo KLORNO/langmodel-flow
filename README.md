@@ -20,4 +20,10 @@ package main
 
 import (
     "context"
- 
+    "fmt"
+
+    . "github.com/KLORNO/langmodel-flow"
+    "github.com/KLORNO/langmodel-flow/llms/openai"
+)
+
+fu
