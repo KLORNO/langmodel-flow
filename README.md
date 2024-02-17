@@ -29,4 +29,8 @@ import (
 func main() {
     // Build a chain that will generate a company name and slogan. Calls to the OpenAI API are made in parallel, and the 
     // results are merged into a single result.
-   
+    chain := Chain(
+        ParallelChain(
+            2,
+            Chain(
+                Template("What is a go
