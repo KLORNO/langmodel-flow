@@ -26,4 +26,5 @@ import (
     "github.com/KLORNO/langmodel-flow/llms/openai"
 )
 
-fu
+func main() {
+    // Build a chain that will generate a company name and slogan. Calls to the Ope
