@@ -33,4 +33,5 @@ func main() {
         ParallelChain(
             2,
             Chain(
-                Template("What is a go
+                Template("What is a good name for a company that makes {product}?"),
+                LLM(openai.NewCompletionModel(openai.Options{
