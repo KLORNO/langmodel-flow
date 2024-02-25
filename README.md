@@ -36,4 +36,6 @@ func main() {
                 Template("What is a good name for a company that makes {product}?"),
                 LLM(openai.NewCompletionModel(openai.Options{Model: "text-davinci-003", Temperature: 1})),
                 MapOutputTo("name"),
-    
+            ),
+            Chain(
+                ChatTemplate{UserMessage("What is a good slogan for a compa
