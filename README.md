@@ -38,4 +38,5 @@ func main() {
                 MapOutputTo("name"),
             ),
             Chain(
-                ChatTemplate{UserMessage("What is a good slogan for a compa
+                ChatTemplate{UserMessage("What is a good slogan for a company that makes {product}?")},
+                ChatLLM(openai.NewChatModel(openai.Options{Model: "gpt-3.5-turbo", 
