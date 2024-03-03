@@ -39,4 +39,8 @@ func main() {
             ),
             Chain(
                 ChatTemplate{UserMessage("What is a good slogan for a company that makes {product}?")},
-                ChatLLM(openai.NewChatModel(openai.Options{Model: "gpt-3.5-turbo", 
+                ChatLLM(openai.NewChatModel(openai.Options{Model: "gpt-3.5-turbo", Temperature: 1})),
+                MapOutputTo("slogan"),
+            ),
+        ),
+        // Y
