@@ -50,4 +50,8 @@ func main() {
     )
 
     // Run the chain
-    res, err := chain(context.Background(), Values{"product": "col
+    res, err := chain(context.Background(), Values{"product": "colorful sockets"})
+    fmt.Println(res, err)
+
+    // Output:
+    // The company Rainbow Socks Co
