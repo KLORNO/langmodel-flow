@@ -45,4 +45,5 @@ func main() {
         ),
         // You can modify the LLMs outputs using some string transformation handlers
         TrimSpace("name", "slogan"),
-  
+        TrimSuffix(".", "name"),
+        Template("The company {name} makes {product} and their slog
