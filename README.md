@@ -46,4 +46,8 @@ func main() {
         // You can modify the LLMs outputs using some string transformation handlers
         TrimSpace("name", "slogan"),
         TrimSuffix(".", "name"),
-        Template("The company {name} makes {product} and their slog
+        Template("The company {name} makes {product} and their slogan is {slogan}."),
+    )
+
+    // Run the chain
+    res, err := chain(context.Background(), Values{"product": "col
