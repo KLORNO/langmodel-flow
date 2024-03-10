@@ -43,4 +43,6 @@ func main() {
                 MapOutputTo("slogan"),
             ),
         ),
-        // Y
+        // You can modify the LLMs outputs using some string transformation handlers
+        TrimSpace("name", "slogan"),
+  
