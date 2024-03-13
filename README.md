@@ -54,4 +54,4 @@ func main() {
     fmt.Println(res, err)
 
     // Output:
-    // The company Rainbow Socks Co
+    // The company Rainbow Socks Co makes colorful socks and their slogan is "Life is too short for boring socks – let us add some c
