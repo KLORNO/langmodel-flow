@@ -54,4 +54,9 @@ func main() {
     fmt.Println(res, err)
 
     // Output:
-    // The company Rainbow Socks Co makes colorful socks and their slogan is "Life is too short for boring socks – let us add some c
+    // The company Rainbow Socks Co makes colorful socks and their slogan is "Life is too short for boring socks – let us add some color to your steps!". <nil>
+}
+
+```
+
+For more sophisticated usage and features, please inspect the [exam
