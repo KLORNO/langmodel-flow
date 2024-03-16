@@ -59,4 +59,8 @@ func main() {
 
 ```
 
-For more sophisticated usage and features, please inspect the [exam
+For more sophisticated usage and features, please inspect the [examples](/examples) folder.
+
+## Installation
+
+To incorporate LangModel-Flow, use the command mentioned below:
