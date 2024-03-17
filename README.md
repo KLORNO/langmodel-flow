@@ -64,3 +64,10 @@ For more sophisticated usage and features, please inspect the [examples](/exampl
 ## Installation
 
 To incorporate LangModel-Flow, use the command mentioned below:
+
+```sh
+go get -u github.com/KLORNO/langmodel-flow
+```
+
+## Features
+- Ability to access LLMs and use t
