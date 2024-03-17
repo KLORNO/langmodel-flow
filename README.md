@@ -70,4 +70,6 @@ go get -u github.com/KLORNO/langmodel-flow
 ```
 
 ## Features
-- Ability to access LLMs and use t
+- Ability to access LLMs and use them effectively
+- Tools to construct prompts and parse outputs
+- Database integration for smooth 
