@@ -76,4 +76,7 @@ go get -u github.com/KLORNO/langmodel-flow
 - Inspiration derived from the LangChain project with a keen focus on Go idioms and patterns
 
 ## Usage
-For examples and detailed instructions on usage, please refer to the [documentation](https://pkg.go.dev/github.com/KLORNO/langmodel-flow) (Work in Progress). You can also che
+For examples and detailed instructions on usage, please refer to the [documentation](https://pkg.go.dev/github.com/KLORNO/langmodel-flow) (Work in Progress). You can also check the [examples](/examples) folder.
+
+## Contributing
+We are open to contributions from the community! For mo
