@@ -73,4 +73,7 @@ go get -u github.com/KLORNO/langmodel-flow
 - Ability to access LLMs and use them effectively
 - Tools to construct prompts and parse outputs
 - Database integration for smooth storage and retrieval of data
-- Inspiration derived from the LangChain project with a keen focus on Go idioms and pa
+- Inspiration derived from the LangChain project with a keen focus on Go idioms and patterns
+
+## Usage
+For examples and detailed instructions on usage, please refer to the [doc
