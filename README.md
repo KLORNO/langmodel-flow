@@ -79,4 +79,7 @@ go get -u github.com/KLORNO/langmodel-flow
 For examples and detailed instructions on usage, please refer to the [documentation](https://pkg.go.dev/github.com/KLORNO/langmodel-flow) (Work in Progress). You can also check the [examples](/examples) folder.
 
 ## Contributing
-We are open to contributions from the community! For more information on how you can contribute, kindly refer to our [contributing guidelines](https://github.com/KLORNO/langmod
+We are open to contributions from the community! For more information on how you can contribute, kindly refer to our [contributing guidelines](https://github.com/KLORNO/langmodel-flow/blob/main/CONTRIBUTING.md).
+
+## License
+LangModel-Flow is licensed under the [MIT License](/LICENSE).
